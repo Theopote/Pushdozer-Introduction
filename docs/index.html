@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pushdozer </title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Pushdozer - Minecraft terrain editing mod documentation (v1.1.1)">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <!-- 加载 docsify 默认主题样式 -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+</head>
+<body>
+  <!-- docsify 挂载点 -->
+  <div id="app"></div>
+  <script>
+    // docsify 配置对象
+    window.$docsify = {
+      // 文档标题
+      name: 'Pushdozer',
+      // GitHub 仓库地址
+      repo: 'theopote/pushdozer',
+      // 文档版本
+      version: 'v1.1.1',
+      // 加载侧边栏
+      loadSidebar: true,
+      // 加载导航栏
+      loadNavbar: true,
+      // 相对路径
+      relativePath: true,
+      // 侧边栏最大层级
+      subMaxLevel: 3,
+      // 内容最大层级
+      maxLevel: 4,
+      // 侧边栏显示层级
+      sidebarDisplayLevel: 1,
+      // 自动滚动到顶部
+      auto2top: true,
+      // 路由模式
+      routerMode: 'hash',
+      // 首页文件
+      homepage: '/en/README.md',
+      // 别名配置
+      nameLink: {
+        '/zh/': '#/zh/',
+        '/en/': '#/en/',
+        '/': '#/en/'
+      },
+
+      // 搜索配置
+      search: {
+        paths: 'auto',
+        placeholder: {
+          '/zh/': '搜索',
+          '/': 'Type to search'
+        },
+        noData: {
+          '/zh/': '找不到结果',
+          '/': 'No results!'
+        }
+      },
+
+      // 分页配置
+      pagination: {
+        // 上一页文本
+        previousText: {
+          '/en/': 'PREVIOUS',
+          '/zh/': '上一章节'
+        },
+        // 下一页文本
+        nextText: {
+          '/en/': 'NEXT',
+          '/zh/': '下一章节'
+        }
+      },
+
+      // 是否显示封面
+      coverpage: false,
+      // 主题颜色
+      themeColor: '#3F51B5',
+
+      // 文件别名配置
+      alias: {
+        '/zh/.*/_sidebar.md': '/zh/_sidebar.md',
+        '/en/.*/_sidebar.md': '/en/_sidebar.md',
+        '/.*/_navbar.md': '/_navbar.md'
+      },
+
+      // 插件配置
+      plugins: [
+        function(hook, vm) {
+          hook.beforeEach(function(content) {
+            const path = vm.route.path;
+            if (path.startsWith('/zh/')) {
+              document.documentElement.lang = 'zh-cn';
+            } else {
+              document.documentElement.lang = 'en';
+            }
+            return content;
+          });
+
+          hook.mounted(function() {
+            if (!vm.route.path || vm.route.path === '/') {
+              window.location.hash = '#/en/README.md';
+            }
+          });
+        }
+      ]
+    }
+  </script>
+
+  <!-- 加载 docsify 核心库 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <!-- 搜索插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <!-- JSON 语法高亮 -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <!-- 代码复制插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <!-- 分页插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <!-- 图片缩放插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <!-- Bash 语法高亮 -->
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <!-- 侧边栏折叠插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
+  <!-- 主题切换插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/index.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css">
+  <!-- 字数统计插件 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-count@latest/dist/countable.min.js"></script>
+</body>
+</html> 
