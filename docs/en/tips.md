@@ -45,6 +45,6 @@
 
 ## Configuration
 
-- Saved at `config/pushdozer_config.json`
+- Config is saved at `config/pushdozer_config.json` and synced to the server for your operations
 - Prefer the in-game config screen over manual JSON editing
-- Legacy `pushdozer.json` is automatically migrated on first load
+- Legacy flat JSON structures (without nested `brush` sections) are auto-migrated on load

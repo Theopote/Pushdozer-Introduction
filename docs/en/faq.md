@@ -67,7 +67,7 @@ The server validates brush size within 1–64. If you see an out-of-range messag
 
 ### Where is the config file?
 
-`config/pushdozer_config.json` (legacy file `pushdozer.json` is auto-migrated)
+`config/pushdozer_config.json` (filename is always this; legacy flat JSON structures are auto-migrated on load)
 
 ### Can I edit the JSON directly?
 
@@ -83,7 +83,7 @@ Yes, but not recommended. Use the in-game config screen to avoid format errors. 
 
 ### Does config sync to other players?
 
-No. Each player's config is stored locally on their client. Work mode, brush shape, and other settings don't affect others.
+No. Your config is synced to the **server** for your own operations, but is **not broadcast to other players** and is not written to anyone else's local file. Each player's work mode, brush shape, and other settings remain independent.
 
 ### Can everyone use the Pushdozer?
 

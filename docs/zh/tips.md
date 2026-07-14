@@ -47,6 +47,6 @@
 
 ## 配置管理
 
-- 配置保存在 `config/pushdozer_config.json`
+- 配置保存在 `config/pushdozer_config.json`，修改后会同步到服务端供你的操作使用
 - 建议通过游戏内界面修改，而非直接编辑 JSON
-- 旧版 `pushdozer.json` 会在首次加载时自动迁移
+- 旧版扁平 JSON 结构（无 `brush` 等嵌套字段）会在加载时自动迁移，无需手动处理

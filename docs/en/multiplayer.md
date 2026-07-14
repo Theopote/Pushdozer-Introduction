@@ -16,7 +16,7 @@ flowchart LR
 
 - **Server-authoritative**: All block changes execute on the server thread
 - **Batch sync**: Terrain changes broadcast via optimized network packets
-- **Independent config**: Each player's work mode, brush, height settings, etc. are stored locally
+- **Independent config**: Each player's work mode, brush, height settings, etc. are independent; saved locally and synced to the server for that player's operations only — not broadcast to others
 - **Independent undo**: Each player has their own 30-step undo/redo history
 
 ## Key Features
@@ -45,7 +45,7 @@ Each player can independently configure:
 - Display mode and operation distance
 - Block filter lists
 
-Config is saved locally at `config/pushdozer_config.json` and does not sync to the server or other players.
+Config is saved locally at `config/pushdozer_config.json` and synced to the server via `ConfigSyncPayload` for your own operations (work mode, brush size, height, etc.). Each player has an independent copy — it is **not broadcast to other players** and is not written to anyone else's local file.
 
 ## Multiplayer Tips
 

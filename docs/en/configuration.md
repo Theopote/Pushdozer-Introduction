@@ -7,8 +7,7 @@
 | Item | Value |
 |------|-------|
 | Path | `.minecraft/config/pushdozer_config.json` |
-| Legacy path | `.minecraft/config/pushdozer.json` (auto-migrated) |
-| Format | JSON, nested structure |
+| Format | JSON, nested structure (`brush` / `surface` / `planting` / `shoreline` / `preview`) |
 
 ## Structure
 
@@ -108,7 +107,7 @@ The config file has 5 main sections:
 
 ## Legacy Migration
 
-If you used an older Pushdozer version (`pushdozer.json` flat format), the mod auto-migrates on first load:
+If you used an older Pushdozer version with a **flat JSON structure** (top-level `radius`, `geometryType`, etc. without nested `brush` sections), the mod auto-detects and migrates it when loading `pushdozer_config.json` — no manual steps needed. The filename is always `pushdozer_config.json`. Field mapping:
 
 | Old Field | New Location |
 |-----------|-------------|

@@ -7,8 +7,7 @@
 | 项目 | 值 |
 |------|-----|
 | 路径 | `.minecraft/config/pushdozer_config.json` |
-| 旧版路径 | `.minecraft/config/pushdozer.json`（自动迁移） |
-| 格式 | JSON，嵌套结构 |
+| 格式 | JSON，嵌套结构（`brush` / `surface` / `planting` / `shoreline` / `preview`） |
 
 ## 配置结构
 
@@ -108,7 +107,7 @@
 
 ## 旧版配置迁移
 
-如果你之前使用过旧版 Pushdozer（`pushdozer.json` 扁平格式），模组会在首次加载时自动将旧配置迁移到新格式。旧字段对应关系：
+如果你之前使用过旧版 Pushdozer 的**扁平 JSON 结构**（顶层直接放 `radius`、`geometryType` 等字段，没有 `brush` 等嵌套节），模组会在加载 `pushdozer_config.json` 时自动识别并迁移到当前的嵌套格式，**无需手动处理**。文件名始终是 `pushdozer_config.json`。旧字段对应关系：
 
 | 旧字段 | 新位置 |
 |--------|--------|
