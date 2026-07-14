@@ -1,6 +1,6 @@
 # Display Modes
 
-Pushdozer provides 3 brush preview modes, cycled with `V`: **Wireframe → Point Cloud → None**.
+Pushdozer provides 4 brush preview modes, cycled with `V`: **Wireframe → Point Cloud → Surface → None**.
 
 Previews are client-side only and do not affect the actual operation area.
 
@@ -17,6 +17,13 @@ Previews are client-side only and do not affect the actual operation area.
 - More intuitive preview of the affected area than wireframe
 - Slightly higher performance cost
 - Best for previewing place, smooth, and other surface operations
+
+## Surface
+
+- Shows the brush volume as semi-transparent white exterior faces
+- More intuitive volume preview than point cloud
+- Higher performance cost than wireframe; use wireframe or none for very large brushes
+- Best when you need to see the solid extent of the brush
 
 ## None
 

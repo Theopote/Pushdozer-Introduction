@@ -104,7 +104,7 @@
 | `displayMode` | 显示模式 | `WIREFRAME` |
 | `maxOperationDistance` | 最大操作距离 | `20` |
 
-**displayMode 可选值**：`WIREFRAME`、`POINT_CLOUD`、`NONE`
+**displayMode 可选值**：`WIREFRAME`、`POINT_CLOUD`、`SURFACE`、`NONE`
 
 ## 旧版配置迁移
 

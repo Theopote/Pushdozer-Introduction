@@ -104,7 +104,7 @@ The config file has 5 main sections:
 | `displayMode` | Display mode | `WIREFRAME` |
 | `maxOperationDistance` | Max operation distance | `20` |
 
-**displayMode values**: `WIREFRAME`, `POINT_CLOUD`, `NONE`
+**displayMode values**: `WIREFRAME`, `POINT_CLOUD`, `SURFACE`, `NONE`
 
 ## Legacy Migration
 

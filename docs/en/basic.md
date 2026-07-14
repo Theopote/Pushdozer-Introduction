@@ -35,7 +35,7 @@ All shortcuts require holding the Pushdozer tool. Rebind them in Minecraft's con
 | `K` | Open/close configuration screen |
 | `G` | Cycle work modes |
 | `U` | Cycle brush geometries (8 types) |
-| `V` | Cycle display modes (Wireframe → Point Cloud → None) |
+| `V` | Cycle display modes (Wireframe → Point Cloud → Surface → None) |
 | `Ctrl+Z` | Undo last operation |
 | `Ctrl+Y` | Redo operation |
 | `↑` / `↓` | Increase / decrease max operation distance |

@@ -10,7 +10,7 @@
 - 🎨 **8 work modes** — Excavate, Place, Smooth, Surface Roughen, Surface Convert, Bone Meal, Batch Plant, Shoreline Process
 - 📐 **8 brush geometries** — Sphere, Box, Octahedron, Cylinder, Cone, Ellipsoid, Tetrahedron, Triangular Prism
 - 📏 **4 height modes** — No Limit, Follow Player, Lock Player Height, Custom Height
-- ⚡ **3 preview modes** — Wireframe, Point Cloud, None
+- ⚡ **4 preview modes** — Wireframe, Point Cloud, Surface, None
 - 🔍 **Block filtering** — Precisely select which blocks can be destroyed
 - 🔄 **Undo/Redo** — 30 steps of operation history per player
 - 🌐 **Multiplayer** — Real-time terrain sync with per-player independent config

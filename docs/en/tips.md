@@ -32,7 +32,7 @@
 ## Performance
 
 - Brush sizes range from 1–64; start small
-- Prefer **Wireframe** display mode
+- Prefer **Wireframe** display mode; use **Surface** when you need a clearer volume preview
 - Execute large operations in batches
 - Notify other players before large operations on multiplayer servers
 
