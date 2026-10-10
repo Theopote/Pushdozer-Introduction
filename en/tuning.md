@@ -86,7 +86,7 @@ Effects, recommended ranges, and combo tips for each work mode. Defaults: [Refer
 | Parameter | Range | Higher | Lower |
 |-----------|-------|--------|-------|
 | Frequency | 0.01–0.15 | Finer detail | Broader waves |
-| Persistence | 0.05–0.95 | More complex layers | Simpler |
+| Persistence | 0.1–0.9 | More complex layers | Simpler |
 | Octaves | 1–6 | More detail (slight perf cost) | Simpler |
 
 ### Recommended Combos

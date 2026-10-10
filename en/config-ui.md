@@ -104,7 +104,7 @@ Click the **Work Mode** button to open a centered panel. The `G` key cycles in t
 | **Smoothing Intensity** slider | 0–1 | Pre-noise smooth baseline |
 | **Auto Scale** toggle | On/Off | Default on; hides advanced params when on |
 | **Noise Frequency** slider | 0.01–0.15 | Visible only when Auto Scale is off |
-| **Noise Persistence** slider | 0.05–0.95 | Same |
+| **Noise Persistence** slider | 0.1–0.9 | Same (UI slider range; JSON edits are clamped to 0.05–0.95) |
 | **Noise Octaves** slider | 1–6 | Same |
 | **Reset** button | — | Restore all defaults |
 | **Done** | — | Save and close |
@@ -116,8 +116,8 @@ Click the **Work Mode** button to open a centered panel. The `G` key cycles in t
 | Block rows (up to 5) | Each row: icon + percentage slider + delete; click icon to change block |
 | **Distribution** cycle button | Natural Patches / Random Scatter |
 | **Allow Artificial Surfaces** toggle | On/Off |
-| **Add Block** | Opens terrain block picker (when fewer than 5 blocks) |
-| **Normalize** | Evenly distributes percentages (when 2+ blocks) |
+| **Add Block** | Opens terrain block picker (when fewer than 5 blocks; hidden at 5) |
+| **Normalize** | Evenly distributes percentages (when 2+ blocks; at 5 blocks, side-by-side with **Done**) |
 | **Done** | Save and close |
 
 ### Bone Meal
@@ -131,11 +131,11 @@ Click the **Work Mode** button to open a centered panel. The `G` key cycles in t
 
 | Control | Description |
 |---------|-------------|
-| **Plant Type** cycle button | Trees / Flowers / Grass / Custom |
+| **Plant Type** cycle button | Trees / Flowers / Grass / Custom (Grass has no extra options) |
 | **Tree Species** cycle button | Shown for Trees: Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Biome Adaptive |
 | **Flower Group** cycle button | Shown for Flowers: Plains, Forest, All, Biome Adaptive |
 | **Select Plant Types** button | Shown for Custom; opens plant multi-select |
-| **Plant Density** slider | 10–100% |
+| **Plant Density** slider | 10–100% (slider shows 0–100%; values below 10% are clamped on save) |
 | **Cluster Scale** slider | Higher = more scattered, lower = more clustered |
 | **Done** | Save and close |
 
@@ -169,6 +169,12 @@ Switching height mode shows an action-bar toast.
 
 ## Save Behavior
 
-- **Save and Close** or sub-panel **Done** writes to `pushdozer_config.json`
+| Action | Behavior |
+|--------|----------|
+| Main **Save and Close** | Writes `pushdozer_config.json` and syncs to server |
+| Most mode sub-panel **Done** | Writes file immediately and shows “saved” toast |
+| **Batch Plant** sub-panel **Done** | Closes sub-panel only (sliders/type update in-memory config in real time, no separate file write) |
+| **Shoreline Process** sub-panel **Done** | Writes file (no separate success toast) |
+
 - In multiplayer, config syncs to the server via `ConfigSyncPayload` (your copy only)
 - Config is **not** broadcast to other players
