@@ -2,7 +2,7 @@
 
 > Pushdozer 是一个操作简单、功能强大的 Minecraft 地形编辑模组，为建筑师和创作者提供直观的大规模地形修改工具。无论是平整山地、挖掘隧道、批量种植植被，还是处理水岸与表层转换，Pushdozer 都能让这些工作变得轻而易举。
 
-**当前文档版本：v1.1.1** · Minecraft 1.21.11 · Fabric
+**当前文档版本：v1.1.2** · Minecraft 1.21.11 · Fabric
 
 ## 核心特性
 
@@ -26,4 +26,4 @@
 | [提交 Issue](https://github.com/Theopote/Pushdozer_Mod/issues) | 反馈 Bug 与功能建议 |
 | [Discord 社区](https://discord.gg/jjr8WmPZ) | 交流与讨论 |
 
-> 文档仓库根目录的 `pushdozer-1.0.0.jar` 为旧版示例，不是当前 v1.1.1 安装包。请从 Modrinth 或 GitHub Releases 下载。
+> 请从 Modrinth 或 GitHub Releases 下载最新安装包。

@@ -134,8 +134,17 @@ function checkGeometrySubPanels() {
 }
 
 /** Compare numeric constants in source against reference docs (exact match required). */
+function readModVersion() {
+  const gradle = readModFile('gradle.properties');
+  const fromGradle = gradle?.match(/^mod_version=(.+)$/m)?.[1]?.trim();
+  if (fromGradle) return fromGradle;
+  const fabric = readModFile('src/main/resources/fabric.mod.json')?.match(/"version":\s*"([^"]+)"/)?.[1];
+  if (fabric && !fabric.includes('${')) return fabric;
+  return null;
+}
+
 function checkExactConstants() {
-  const modVersion = readModFile('src/main/resources/fabric.mod.json')?.match(/"version":\s*"([^"]+)"/)?.[1];
+  const modVersion = readModVersion();
   const maxBrush = readModFile('src/main/java/com/pushdozer/config/domain/BrushConfig.java')?.match(/MAX_BRUSH_RADIUS = (\d+)/)?.[1];
   const maxDist = readModFile('src/main/java/com/pushdozer/config/PushdozerConfig.java')?.match(/MAX_OPERATION_DISTANCE = (\d+)/)?.[1];
   const undoSteps = readModFile('src/main/java/com/pushdozer/operations/UndoRedoManager.java')?.match(/MAX_UNDO_REDO_STEPS = (\d+)/)?.[1];
@@ -172,8 +181,21 @@ function checkExactConstants() {
   for (const r of readmes) {
     const c = readFileSync(r, 'utf8');
     if (!c.includes(modVersion)) {
-      warnings.push(`${relative(ROOT, r)} may not mention mod version ${modVersion}`);
+      errors.push(`${relative(ROOT, r)} must mention mod version ${modVersion}`);
     }
+  }
+
+  const changelogs = [join(DOCS, 'zh', 'changelog.md'), join(DOCS, 'en', 'changelog.md')];
+  for (const file of changelogs) {
+    const c = readFileSync(file, 'utf8');
+    if (!c.includes(modVersion)) {
+      errors.push(`${relative(ROOT, file)} must mention mod version ${modVersion}`);
+    }
+  }
+
+  const rootReadme = readFileSync(join(ROOT, 'README.md'), 'utf8');
+  if (!rootReadme.includes(modVersion)) {
+    errors.push('README.md must mention current mod version');
   }
 }
 

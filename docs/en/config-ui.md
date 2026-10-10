@@ -93,7 +93,7 @@ Click the **Work Mode** button to open a centered panel. The `G` key cycles in t
 | **☑ Adaptive Smooth** | |
 | **☑ Raise** | |
 | **☑ Lower** | |
-| **Smooth Strength / Raise-Lower Depth** slider | 0.1–1.0; label changes for Raise/Lower |
+| **Strength slider** | 0.1–1.0; label varies by variant: Standard/Adaptive → Smooth Strength; Raise → Raise Depth; Lower → Lower Depth |
 | **Done** | Save and close |
 
 ### Surface Roughen

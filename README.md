@@ -1,6 +1,6 @@
 # Pushdozer
 
-Pushdozer 模组使用文档（适用于 v1.1.1+）。涵盖安装入门、配置界面、8 种工作模式、笔刷与标高、实战教程、多人游戏、参数参考与常见问题等主题。
+Pushdozer 模组使用文档（适用于 v1.1.2+）。涵盖安装入门、配置界面、8 种工作模式、笔刷与标高、实战教程、多人游戏、参数参考与常见问题等主题。
 
 在线文档：[https://theopote.github.io/Pushdozer-Introduction](https://theopote.github.io/Pushdozer-Introduction)
 
@@ -17,9 +17,15 @@ Pushdozer 模组使用文档（适用于 v1.1.1+）。涵盖安装入门、配�
 |------|------|
 | **Modrinth** | 官方推荐下载入口，提供稳定发布版 |
 | **GitHub Releases**（Pushdozer_Mod） | 模组源码仓库的发布页 |
-| 本仓库根目录 `pushdozer-1.0.0.jar` | 旧版示例文件，**不是**当前 v1.1.1 正式安装包，请勿直接使用 |
 
-文档版本与模组 `fabric.mod.json` 中的版本号对齐（当前 **v1.1.1**，Minecraft 1.21.11）。
+文档版本与模组 `fabric.mod.json` 中的版本号对齐（当前 **v1.1.2**，Minecraft 1.21.11）。
+
+## 文档许可
+
+- 本仓库 Markdown 文档文字：[CC BY 4.0](LICENSE)
+- 模组源码：[MIT License](https://github.com/Theopote/Pushdozer_Mod/blob/main/LICENSE)
+- `docs/assets/` 下 SVG 占位图：© Theopote，转载需署名
+- 游戏截图（如有）：Minecraft 游戏画面，受 Mojang 使用条款约束
 
 ## 本地预览
 
