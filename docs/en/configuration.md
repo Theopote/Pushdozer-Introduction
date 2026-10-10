@@ -131,36 +131,107 @@ If you used an older Pushdozer version with a **flat JSON structure** (top-level
 | `maxOperationDistance` | `preview.maxOperationDistance` |
 | `breakableBlockIds` | `brush.breakableBlockIds` |
 
-## Example
+## Configuration Examples
+
+### Level Building Site (Excavate)
 
 ```json
 {
   "workMode": "EXCAVATE",
   "brush": {
     "geometryType": "BOX",
-    "length": 10,
-    "width": 10,
-    "height": 5,
+    "length": 20,
+    "width": 20,
+    "height": 4,
     "heightMode": "LOCKED_ONCE",
     "lockedHeight": 64,
-    "breakableBlockIds": [],
-    "ignoredBlockIds": ["minecraft:water", "minecraft:lava", "minecraft:air"]
-  },
-  "surface": {
-    "placeMode": "ADAPTIVE_BIOME",
-    "smoothVariant": "ADAPTIVE",
-    "smoothStrength": 0.5
-  },
-  "planting": {
-    "plantType": "TREES",
-    "selectedTree": "BIOME_ADAPTIVE"
-  },
-  "shoreline": {
-    "shorelineType": "BEACH"
+    "breakableBlockIds": [
+      "minecraft:dirt",
+      "minecraft:grass_block",
+      "minecraft:stone",
+      "minecraft:gravel"
+    ]
   },
   "preview": {
     "displayMode": "WIREFRAME",
-    "maxOperationDistance": 30
+    "maxOperationDistance": 25
+  }
+}
+```
+
+### Hill Adaptive Smooth
+
+```json
+{
+  "workMode": "SMOOTH",
+  "brush": {
+    "geometryType": "SPHERE",
+    "sphereRadius": 12,
+    "heightMode": "NO_LIMIT"
+  },
+  "surface": {
+    "smoothVariant": "ADAPTIVE",
+    "smoothStrength": 0.4
+  }
+}
+```
+
+### Mixed Surface (Surface Convert)
+
+```json
+{
+  "workMode": "SURFACE_CONVERT",
+  "brush": {
+    "geometryType": "SPHERE",
+    "sphereRadius": 8
+  },
+  "surface": {
+    "surfaceConvertBlocks": [
+      { "blockId": "minecraft:grass_block", "percentage": 60.0 },
+      { "blockId": "minecraft:dirt", "percentage": 25.0 },
+      { "blockId": "minecraft:coarse_dirt", "percentage": 15.0 }
+    ],
+    "surfaceConvertDistribution": "PATCHY",
+    "convertArtificialSurfaces": false
+  }
+}
+```
+
+### Batch Afforestation
+
+```json
+{
+  "workMode": "BATCH_PLANT",
+  "brush": {
+    "geometryType": "SPHERE",
+    "sphereRadius": 15
+  },
+  "planting": {
+    "plantType": "TREES",
+    "selectedTree": "BIOME_ADAPTIVE",
+    "plantDensity": 0.35,
+    "clusterScale": 0.08,
+    "respectBiomes": true
+  }
+}
+```
+
+### Lake Beach (Shoreline)
+
+```json
+{
+  "workMode": "SHORELINE_PROCESS",
+  "brush": {
+    "geometryType": "BOX",
+    "length": 16,
+    "width": 3,
+    "height": 2
+  },
+  "shoreline": {
+    "shorelineType": "BEACH",
+    "shorelineWidth": 4,
+    "plantVegetationEnabled": true,
+    "vegetationDensity": 0.15
   }
 }
 ```

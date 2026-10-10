@@ -192,3 +192,14 @@ The brush geometry is built around this center, then height filters apply.
 4. Non-stackable
 
 ModMenu provides quick access to mod info and the config screen.
+
+---
+
+## Related Docs
+
+| Topic | Document |
+|-------|----------|
+| One-page cheat sheet | [Quick Reference](cheatsheet.md) |
+| How to tune parameters | [Parameter Tuning](tuning.md) |
+| UI layout | [Visual UI Guide](visual-guide.md) |
+| JSON examples | [Configuration](configuration.md) |

@@ -1,6 +1,6 @@
 # Pushdozer
 
-Pushdozer 模组使用文档（适用于 v1.1.1+）。含名词解释、配置界面、14 篇操作教程、水岸预设、参考手册等完整章节。
+Pushdozer 模组使用文档（适用于 v1.1.1+）。共 15 章：速查表、名词解释、配置界面、界面视觉指南、8 种工作模式、14 篇操作教程、参数调优、水岸预设、参考手册、配置示例等。
 
 在线文档：[https://theopote.github.io/Pushdozer-Introduction](https://theopote.github.io/Pushdozer-Introduction)
 

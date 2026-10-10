@@ -1,5 +1,7 @@
 # Getting Started
 
+> Quick lookup for keys and defaults: [Quick Reference](cheatsheet.md)
+
 ## Requirements
 
 | Component | Version |
