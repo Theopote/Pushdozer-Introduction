@@ -11,10 +11,11 @@
 <body>
   <div id="app"></div>
   <script>
-    // GitHub Pages project site lives under /Pushdozer-Introduction/; local serve uses /
-    const basePath = window.location.hostname.endsWith('github.io')
-      ? '/Pushdozer-Introduction/'
-      : '/';
+    // Detect subpath from URL (works on github.io, mirrors, and local serve)
+    const basePath = (function() {
+      const match = window.location.pathname.match(/^(.*\/Pushdozer-Introduction\/)/);
+      return match ? match[1] : '/';
+    })();
 
     window.$docsify = {
       name: 'Pushdozer',
@@ -25,12 +26,15 @@
 
       loadSidebar: true,
       loadNavbar: true,
-      relativePath: false,
+      // Must be true: sidebar links like "basic.md" must resolve to /zh/basic.md, not /basic.md
+      relativePath: true,
 
       alias: {
         '/zh/.*/_sidebar.md': '/zh/_sidebar.md',
         '/en/.*/_sidebar.md': '/en/_sidebar.md',
-        '/.*/_navbar.md': '/_navbar.md'
+        '/.*/_navbar.md': '/_navbar.md',
+        '/zh/': '/zh/README.md',
+        '/en/': '/en/README.md'
       },
 
       auto2top: true,
@@ -61,14 +65,23 @@
             return content;
           });
 
+          // Redirect legacy/wrong routes like #/basic.md → #/zh/basic.md
+          function fixOrphanMdRoute() {
+            const path = vm.route.path;
+            if (/^\/[^/]+\.md$/.test(path)) {
+              vm.router.replace('/zh' + path);
+            }
+          }
+
           hook.mounted(function() {
+            fixOrphanMdRoute();
             const path = vm.route.path;
             if (!path || path === '/') {
-              window.location.replace(
-                window.location.pathname + window.location.search + '#/zh/README.md'
-              );
+              vm.router.replace('/zh/README.md');
             }
           });
+
+          hook.doneEach(fixOrphanMdRoute);
         }
       ]
     };

@@ -68,6 +68,9 @@ function checkDefaultHomepage() {
   if (!html.includes('Pushdozer-Introduction')) {
     errors.push('docs/index.html should set basePath for GitHub Pages subpath');
   }
+  if (!/relativePath:\s*true/.test(html)) {
+    errors.push('docs/index.html should set relativePath: true (sidebar links need /zh/ prefix)');
+  }
   if (!html.includes('Theopote/Pushdozer_Mod')) {
     errors.push('docs/index.html repo should be Theopote/Pushdozer_Mod');
   }
