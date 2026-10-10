@@ -171,6 +171,49 @@ function checkExactConstants() {
   }
 }
 
+/** Surface roughen UI slider ranges must match SurfaceRoughenConfigPanel.java */
+function checkSurfaceRoughenPanel() {
+  const src = readModFile('src/main/java/com/pushdozer/ui/panels/workmode/SurfaceRoughenConfigPanel.java');
+  if (!src) return;
+
+  const persistence = src.match(/createPersistenceSlider[\s\S]*?pMin = ([\d.]+)f, pMax = ([\d.]+)f/);
+  if (!persistence) {
+    warnings.push('Could not parse noise persistence range from SurfaceRoughenConfigPanel');
+    return;
+  }
+  const [, pMin, pMax] = persistence;
+  const uiRange = `${pMin}–${pMax}`;
+
+  const configUiFiles = [
+    join(DOCS, 'zh', 'config-ui.md'),
+    join(DOCS, 'en', 'config-ui.md'),
+  ];
+  for (const file of configUiFiles) {
+    if (!existsSync(file)) continue;
+    const content = readFileSync(file, 'utf8');
+    const persistenceRow = content.match(/\|[^\n]*(持久性|Persistence)[^\n]*\|/);
+    if (persistenceRow) {
+      const cols = persistenceRow[0].split('|').map((c) => c.trim()).filter(Boolean);
+      const rangeCol = cols[1] ?? '';
+      if (/0\.05[–-]0\.95/.test(rangeCol)) {
+        errors.push(`${relative(ROOT, file)}: noise persistence UI range should be ${uiRange}, not 0.05–0.95`);
+      }
+      if (!rangeCol.includes(uiRange)) {
+        warnings.push(`${relative(ROOT, file)}: expected noise persistence UI range ${uiRange} in table row`);
+      }
+    }
+  }
+
+  const tuningFiles = [join(DOCS, 'zh', 'tuning.md'), join(DOCS, 'en', 'tuning.md')];
+  for (const file of tuningFiles) {
+    if (!existsSync(file)) continue;
+    const content = readFileSync(file, 'utf8');
+    if (/0\.05[–-]0\.95/.test(content)) {
+      errors.push(`${relative(ROOT, file)}: tuning persistence range should match UI (${uiRange})`);
+    }
+  }
+}
+
 function checkKeyBindingsSource() {
   const kb = readModFile('src/main/java/com/pushdozer/client/KeyBindings.java');
   if (!kb) return;
@@ -189,6 +232,7 @@ checkStaleLinks();
 checkDefaultHomepage();
 checkKeyBindingDocs();
 checkGeometrySubPanels();
+checkSurfaceRoughenPanel();
 checkExactConstants();
 checkKeyBindingsSource();
 

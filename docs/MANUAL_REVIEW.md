@@ -15,22 +15,36 @@
 | 正四面体 | `TetrahedronSubPanel` | **仅边长** | config-ui.md |
 | 三棱柱 | `TriangularPrismSubPanel` | 边长、高度 | config-ui.md |
 
-## 工作模式 Config 子面板
+## 工作模式 Config 子面板（第二轮源码对照）
 
-| 模式 | Java 类 | 验收要点 |
-|------|---------|----------|
-| 挖掘 | `ExcavateConfigPanel` | 方块选择按钮、标高入口 |
-| 铺设 | `PlaceConfigPanel` | 自适应 / 指定方块 |
-| 平滑 | `SmoothConfigPanel` | 4 变体单选、强度滑条、tooltip |
-| 表面粗糙 | `SurfaceRoughenConfigPanel` | 粗糙/重塑/噪声参数 |
-| 表层转换 | `SurfaceConvertConfigPanel` | 最多 5 方块、分布模式 |
-| 撒骨粉 | `BoneMealConfigPanel` | 无额外 Config（确认文档未虚构面板） |
-| 批量种植 | `BatchPlantConfigPanel` | 类型、密度、团簇 |
-| 水岸 | `ShorelineProcessConfigPanel` | 类型、宽度、植被、标高开关 |
+| 组 | 模式 | Java 类 | 对照结果 | 备注 |
+|----|------|---------|----------|------|
+| 1 | 挖掘 | `ExcavateConfigPanel` | ✅ | 方块多选按钮 + `persistPanelConfig` |
+| 1 | 铺设 | `PlaceConfigPanel` | ✅ | 自适应 / 指定自然方块单选；点选方块按钮自动切换模式 |
+| 2 | 平滑 | `SmoothConfigPanel` | ✅ | 4 变体单选；强度 0.1–1.0；提升/降低时滑条标签变化 |
+| 2 | 表面粗糙 | `SurfaceRoughenConfigPanel` | ✅ 已修 | UI 持久性 **0.1–0.9**（非 JSON 钳制 0.05–0.95）；自动缩放关才显示高级参数 |
+| 3 | 表层转换 | `SurfaceConvertConfigPanel` | ✅ 已补 | 满 5 种时隐藏「添加」；「归一化」与「完成」并排 |
+| 3 | 撒骨粉 | `BoneMealConfigPanel` | ✅ | 仅提示文字 |
+| 4 | 批量种植 | `BatchPlantConfigPanel` | ✅ 已补 | 草类无额外控件；密度钳制 ≥10%；**完成** 不写文件 |
+| 4 | 水岸处理 | `ShorelineProcessConfigPanel` | ✅ | 自定义类型并排选方块/植物；植被密度显示条件与文档一致；**完成** 写文件无 toast |
+
+### 每组五要素检查项
+
+1. **控件是否存在** — 对照 `initializeWidgets()`
+2. **名称是否正确** — 对照 `assets/pushdozer/lang/*.json`
+3. **数值范围** — 对照各 `CustomSlider` / `SliderWidget` 的 min/max
+4. **显示条件** — 对照 `if (config.get…())` 分支与 `show()` 重绘
+5. **保存行为** — 对照 `saveConfig()`：`persistPanelConfig()` / `config.save()` / 空实现
 
 ## 快捷键
 
 对照 `KeyBindings.java`：`isHoldingPushdozer()` 检查主手 **与** 副手。
+
+## GitHub Pages 发布（P0）
+
+当前工作流使用 `peaceiris/actions-gh-pages@v4` 推送到 **`gh-pages` 分支**。旧日志中的 `actions/configure-pages` 失败 **不适用于** 现方案。
+
+一次性设置：**Settings → Pages → Deploy from a branch → `gh-pages` → / (root)**，然后 Re-run **Deploy documentation to GitHub Pages**。
 
 ## 截图（P2）
 
