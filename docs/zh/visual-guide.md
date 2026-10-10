@@ -1,6 +1,29 @@
 # 界面视觉指南
 
-通过界面布局说明帮助快速定位功能。截图可在后续版本补充。
+通过界面布局说明帮助快速定位功能。游戏内实测截图见 `docs/assets/` 目录；以下为布局示意与截图清单。
+
+## 截图清单
+
+每个主要功能需 **操作前 → 笔刷预览 → 操作后** 三阶段截图，并在图中标注关键参数：
+
+| 优先级 | 功能 | 建议参数 | 资源路径 |
+|--------|------|----------|----------|
+| 1 | 挖掘 + 长方体平整 | 挖掘，Box 8×8×3，锁定标高 | `assets/workflows/excavate-*.png` |
+| 2 | 平滑四变体对比 | 同地形，Standard/Adaptive/Raise/Lower | `assets/modes/smooth-*.png` |
+| 3 | 笔刷选择与预览 | 球体线框 → 放置结果 | `assets/shapes/sphere-*.png` |
+| 4 | 水岸预设对比 | Beach/Embankment/Muddy/Rocky | `assets/modes/shoreline-*.png` |
+| 5 | 批量种植 | 树木，密度 30% | `assets/modes/plant-*.png` |
+
+当前占位图（待替换为实测截图）：
+
+![挖掘流程占位图](../assets/workflows/excavate-placeholder.svg)
+
+| 功能 | 占位图 |
+|------|--------|
+| 平滑四变体 | ![](../assets/modes/smooth-placeholder.svg) |
+| 球体笔刷 | ![](../assets/shapes/sphere-placeholder.svg) |
+| 水岸预设 | ![](../assets/modes/shoreline-placeholder.svg) |
+| 批量种植 | ![](../assets/modes/plant-placeholder.svg) |
 
 ---
 

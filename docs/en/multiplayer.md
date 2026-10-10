@@ -28,12 +28,17 @@ flowchart LR
 - Large operations use a batch queue: up to 500 blocks per batch, 100ms delay
 - Undo/redo also syncs to all clients
 
-### Permissions
+### Permissions (confirmed in code)
 
-- **All players can use Pushdozer by default** — no special permissions needed
-- Brush size capped at 64 blocks (server-side validation)
-- Compatible with area protection plugins (e.g., WorldGuard)
-- Extensible custom permission system supported
+- **All players can use Pushdozer by default** — the server only validates brush size parameters are within 1–64 (`OperationPermissions`)
+- Operations with ≤50 blocks sync immediately; larger operations batch (≤500 blocks per batch, 100ms interval)
+- Undo history: 30 steps per player per dimension, 300 ms cooldown
+
+### Area protection plugins (not officially tested)
+
+- Pushdozer has **no built-in** integration with WorldGuard or similar plugins
+- Server admins may **indirectly** restrict block changes via area protection plugins, but compatibility is **not officially tested**
+- If operations fail, check protected regions and action bar messages
 
 ### Independent Config
 
@@ -94,10 +99,18 @@ Config is saved locally at `config/pushdozer_config.json` and synced to the serv
 
 ## Server Administrators
 
-Pushdozer requires no additional server configuration. To restrict usage:
+Pushdozer requires no additional server configuration.
 
-1. Use area protection plugins to block modifications in specific regions
-2. Extend `OperationPermissions` to integrate LuckPerms or similar
-3. Monitor server logs for Pushdozer operation records
+### Player-facing recommendations
 
-For technical details, see [MULTIPLAYER_SUPPORT.md](https://github.com/theopote/pushdozer/blob/main/docs/MULTIPLAYER_SUPPORT.md) in the mod repository.
+1. Use area protection plugins to block modifications in specific regions (configure and test yourself)
+2. Monitor server logs for Pushdozer operation records
+
+### Developer / extension points (not built-in)
+
+These are **extensible interfaces** in source code, not out-of-the-box features:
+
+- Extend `OperationPermissions` to integrate LuckPerms or similar
+- Custom batching and network sync strategies
+
+For technical details, see [MULTIPLAYER_SUPPORT.md](https://github.com/Theopote/Pushdozer_Mod/blob/main/docs/MULTIPLAYER_SUPPORT.md). Note: some values in that doc may lag behind current code — **source code is authoritative** (current brush limit is 64, not 100).

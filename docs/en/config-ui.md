@@ -1,6 +1,6 @@
 # Configuration Screen Reference
 
-Press `K` to open the **Pushdozer Configuration** screen (requires holding the Pushdozer in your main hand). Also available via **ModMenu** (optional [ModMenu](https://modrinth.com/mod/modmenu) mod).
+Press `K` to open the **Pushdozer Configuration** screen (**main hand** required; K does nothing with the tool in offhand, but G/U/V shortcuts still work). Also available via **ModMenu** (optional [ModMenu](https://modrinth.com/mod/modmenu) mod).
 
 ### ModMenu Entry
 

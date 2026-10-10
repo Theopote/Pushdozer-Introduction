@@ -2,7 +2,7 @@
 
 Pushdozer 用户文档对应模组版本 **v1.1.1**（Minecraft 1.21.11）。
 
-完整开发变更见 [GitHub CHANGELOG](https://github.com/theopote/pushdozer/blob/main/CHANGELOG.md)。
+完整开发变更见 [GitHub CHANGELOG](https://github.com/Theopote/Pushdozer_Mod/blob/main/CHANGELOG.md)。
 
 ---
 

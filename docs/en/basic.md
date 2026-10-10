@@ -16,9 +16,11 @@
 
 1. Install the [Fabric mod loader](https://fabricmc.net/use/)
 2. Download and install [Fabric API](https://modrinth.com/mod/fabric-api)
-3. Download Pushdozer from [GitHub Releases](https://github.com/theopote/pushdozer/releases) or [Modrinth](https://modrinth.com/mod/pushdozer)
+3. Download Pushdozer **v1.1.1** from [Modrinth](https://modrinth.com/mod/pushdozer) (recommended) or [GitHub Releases](https://github.com/Theopote/Pushdozer_Mod/releases)
 4. Place the JAR file in your `.minecraft/mods` folder
 5. Launch the game (client or dedicated server)
+
+> **Note**: Do not use `pushdozer-1.0.0.jar` from this documentation repo—it is an old sample, not the current release.
 
 ## First Use
 
@@ -43,13 +45,23 @@ Press `K` to open the configuration screen. Main areas from top to bottom:
 
 You can also access the config screen via the Pushdozer button in the ModMenu mod list.
 
+## Interaction Requirements
+
+| Action | Main hand | Offhand |
+|--------|-----------|---------|
+| Shortcut keys (G/U/V/↑↓/Ctrl+Z/Y) | ✓ | ✓ |
+| Open config screen (K) | ✓ | ✗ |
+| Right-click to execute | ✓ | ✓ |
+
+> With the Pushdozer in your offhand, G/U/V shortcuts still work, but **K cannot open the config screen** (main hand required). The ModMenu entry is not affected.
+
 ## Default Key Bindings
 
-All shortcuts require holding the Pushdozer tool. Rebind them in Minecraft's control settings.
+Shortcuts respond when the Pushdozer is in your main hand or offhand. Rebind them in Minecraft's control settings.
 
 | Key | Action |
 |-----|--------|
-| `K` | Open/close configuration screen |
+| `K` | Open/close configuration screen (main hand) |
 | `G` | Cycle work modes |
 | `U` | Cycle brush geometries (8 types) |
 | `V` | Cycle display modes (Wireframe → Point Cloud → Surface → None → …) |
@@ -61,32 +73,22 @@ All shortcuts require holding the Pushdozer tool. Rebind them in Minecraft's con
 
 ## 5-Minute Quick Start
 
-### Level Ground
+Follow this single flow for your first terrain edit:
 
-1. Select **Excavate** mode
-2. Click **Select blocks to destroy** and check at least one block type to clear (e.g., dirt, stone)
-3. Choose **Box** brush and adjust length, width, height
-4. Set height mode to **Lock Player Height**
-5. Right-click the ground
+| Step | Action |
+|------|--------|
+| 1. Get the tool | Creative mode → **Tools** group → **Pushdozer** |
+| 2. Open config | Hold in **main hand**, press `K` |
+| 3. Choose mode | Select **Excavate** → **Config** → **Select blocks to destroy**, check dirt, stone, etc. |
+| 4. Set brush | **Box** brush ~8×8×3; height mode **Lock Player Height** |
+| 5. Preview | Press `V` for **Wireframe** (default); move view to see brush bounds |
+| 6. Execute | **Right-click** the ground — blocks are cleared |
+| 7. Undo | Press `Ctrl+Z` to undo; adjust and retry as needed |
 
-### Place Surface Blocks
+Then explore:
 
-1. Select **Place** mode
-2. Choose **Adaptive Biome** (or a specific natural block)
-3. Right-click the target area
+- **Place** mode to fill depressions → [Work Modes · Place](modes.md#place-mode)
+- **Batch Plant** for forests → [Workflows](workflows.md)
+- **Shoreline Process** for beaches → [Shoreline Presets](shoreline.md)
 
-### Plant a Forest
-
-1. Select **Batch Plant** mode
-2. Set plant type to **Trees**, species to **Biome Adaptive**
-3. Adjust plant density and cluster scale
-4. Right-click the target area
-
-### Create a Beach
-
-1. Select **Shoreline Process** mode
-2. Set shoreline type to **Beach**
-3. Adjust shoreline width, optionally enable vegetation
-4. Right-click the water's edge
-
-More step-by-step guides: [Tutorials](workflows.md).
+More scenarios: [Tutorials](workflows.md).

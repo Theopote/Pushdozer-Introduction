@@ -11,18 +11,99 @@
 
 ## Structure
 
-The config file has 5 main sections:
+The config file has 5 main sections. The block below is a **structure overview** with placeholders—it is **not valid JSON** and cannot be pasted directly:
 
 ```json
 {
   "workMode": "EXCAVATE",
-  "brush": { ... },
-  "surface": { ... },
-  "planting": { ... },
-  "shoreline": { ... },
-  "preview": { ... }
+  "brush": { "...": "see full example below" },
+  "surface": { "...": "see full example below" },
+  "planting": { "...": "see full example below" },
+  "shoreline": { "...": "see full example below" },
+  "preview": { "...": "see full example below" }
 }
 ```
+
+### Full Default Config (copy-paste ready)
+
+All fields below are valid and match the mod's first-run defaults:
+
+```json
+{
+  "workMode": "EXCAVATE",
+  "brush": {
+    "breakableBlockIds": [],
+    "ignoredBlockIds": [],
+    "shape": "Box",
+    "geometryType": "BOX",
+    "radius": 5,
+    "length": 5,
+    "width": 5,
+    "height": 5,
+    "sphereRadius": 5,
+    "cylinderRadius": 5,
+    "coneRadius": 5,
+    "octahedronRadius": 5,
+    "tetrahedronEdgeLength": 5,
+    "triangularPrismSideLength": 5,
+    "boxHeight": 5,
+    "cylinderHeight": 5,
+    "coneHeight": 5,
+    "sphereHeight": 5,
+    "octahedronHeight": 5,
+    "tetrahedronHeight": 5,
+    "triangularPrismHeight": 5,
+    "ellipsoidHeight": 5,
+    "lockedHeight": 0,
+    "heightMode": "NO_LIMIT",
+    "isLockedOnceMode": false
+  },
+  "surface": {
+    "placeMode": "ADAPTIVE_BIOME",
+    "selectedNaturalBlockId": "minecraft:stone",
+    "smoothStrength": 0.5,
+    "directionalSmoothBlend": 0.65,
+    "smoothVariant": "ADAPTIVE",
+    "roughnessStrength": 0.5,
+    "smoothingIntensity": 0.5,
+    "noiseAutoScale": true,
+    "noiseFrequency": 0.02,
+    "noisePersistence": 0.5,
+    "noiseOctaves": 4,
+    "surfaceConvertBlocks": [
+      { "blockId": "minecraft:grass_block", "percentage": 100.0 }
+    ],
+    "convertArtificialSurfaces": false,
+    "surfaceConvertDistribution": "PATCHY",
+    "surfaceConvertMaxBelowSurfaceDepth": 3
+  },
+  "planting": {
+    "plantType": "TREES",
+    "customPlantBlockIds": [],
+    "plantDensity": 0.3,
+    "selectedTree": "BIOME_ADAPTIVE",
+    "selectedFlowerGroup": "BIOME_ADAPTIVE",
+    "respectBiomes": true,
+    "clusterScale": 0.05
+  },
+  "shoreline": {
+    "shorelineType": "ADAPTIVE",
+    "shorelineWidth": 3,
+    "plantVegetationEnabled": true,
+    "vegetationDensity": 0.1,
+    "customShorelineBlocks": [],
+    "customShorelinePlants": [],
+    "shorelineHeightAboveEnabled": false,
+    "shorelineHeightBelowEnabled": false
+  },
+  "preview": {
+    "displayMode": "WIREFRAME",
+    "maxOperationDistance": 20
+  }
+}
+```
+
+> `noiseSeed` is generated at runtime; you do not need to set it manually.
 
 ### workMode — Work Mode
 

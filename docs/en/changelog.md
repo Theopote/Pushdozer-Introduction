@@ -2,7 +2,7 @@
 
 This documentation corresponds to Pushdozer mod version **v1.1.1** (Minecraft 1.21.11).
 
-Full developer changelog: [GitHub CHANGELOG](https://github.com/theopote/pushdozer/blob/main/CHANGELOG.md).
+Full developer changelog: [GitHub CHANGELOG](https://github.com/Theopote/Pushdozer_Mod/blob/main/CHANGELOG.md).
 
 ---
 

@@ -19,7 +19,11 @@
 
 ## 下载与反馈
 
-- [GitHub 发布页](https://github.com/theopote/pushdozer/releases)
-- [Modrinth](https://modrinth.com/mod/pushdozer)
-- [提交 Issue](https://github.com/theopote/pushdozer/issues)
-- [Discord 社区](https://discord.gg/jjr8WmPZ)
+| 来源 | 说明 |
+|------|------|
+| [Modrinth](https://modrinth.com/mod/pushdozer) | **官方推荐**稳定发布版下载 |
+| [GitHub Releases](https://github.com/Theopote/Pushdozer_Mod/releases) | 模组源码仓库发布页 |
+| [提交 Issue](https://github.com/Theopote/Pushdozer_Mod/issues) | 反馈 Bug 与功能建议 |
+| [Discord 社区](https://discord.gg/jjr8WmPZ) | 交流与讨论 |
+
+> 文档仓库根目录的 `pushdozer-1.0.0.jar` 为旧版示例，不是当前 v1.1.1 安装包。请从 Modrinth 或 GitHub Releases 下载。

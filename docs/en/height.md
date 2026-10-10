@@ -4,6 +4,20 @@ The height system controls vertical restrictions during Pushdozer operations. Co
 
 ---
 
+## Height cross-section (side view)
+
+```
+Reference ─────────── Y=64 ───────────
+              Excavate ↑ allowed above
+              Place    ↓ allowed below
+
+No Limit:     no Y restriction for excavate/place
+Follow Player: reference Y = foot level, updates as you move
+Lock/Custom:  reference Y = lockedHeight, fixed
+```
+
+---
+
 ## Four Height Modes
 
 ### No Limit (NO_LIMIT)

@@ -1,6 +1,6 @@
 # Reference Manual
 
-Defaults, system limits, in-game messages, and operation mechanics for Pushdozer.
+Defaults, system limits, in-game messages, and operation mechanics for Pushdozer. For daily lookup, see [Quick Reference](cheatsheet.md).
 
 ---
 
@@ -45,7 +45,7 @@ Defaults, system limits, in-game messages, and operation mechanics for Pushdozer
 | Smooth / directional depth | 0.1–1.0 |
 | Roughness strength | 0.1–2.0 |
 | Plant density | 10–100% |
-| Config screen | Requires Pushdozer in main hand |
+| Config screen (K) | Main hand only; other shortcuts work in main or offhand |
 
 ---
 
@@ -166,19 +166,27 @@ The brush geometry is built around this center, then height filters apply.
 
 ---
 
+## Interaction Requirements
+
+| Action | Main hand | Offhand |
+|--------|-----------|---------|
+| Shortcuts G/U/V/↑↓/Ctrl+Z/Y | ✓ | ✓ |
+| Config screen K | ✓ | ✗ |
+| Right-click execute | ✓ | ✓ |
+
 ## Complete Key Bindings
 
-| Key | Action | Requires Tool |
-|-----|--------|---------------|
-| `K` | Open/close config screen | Yes (main hand) |
-| `G` | Cycle work modes | Yes |
-| `U` | Cycle brush geometries | Yes |
-| `V` | Cycle display modes | Yes |
-| `↑` | Increase operation distance | Yes |
-| `↓` | Decrease operation distance | Yes |
-| `Ctrl+Z` | Undo | Yes |
-| `Ctrl+Y` | Redo | Yes |
-| **Right-click** | Execute current mode | Yes (main or offhand) |
+| Key | Action | Hold requirement |
+|-----|--------|------------------|
+| `K` | Open/close config screen | Main hand |
+| `G` | Cycle work modes | Main or offhand |
+| `U` | Cycle brush geometries | Main or offhand |
+| `V` | Cycle display modes | Main or offhand |
+| `↑` | Increase operation distance | Main or offhand |
+| `↓` | Decrease operation distance | Main or offhand |
+| `Ctrl+Z` | Undo | Main or offhand |
+| `Ctrl+Y` | Redo | Main or offhand |
+| **Right-click** | Execute current mode | Main or offhand |
 
 > Rebind under **Options → Controls → Pushdozer**.
 

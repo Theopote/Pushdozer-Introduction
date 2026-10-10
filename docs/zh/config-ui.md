@@ -1,6 +1,6 @@
 # 配置界面详解
 
-按 `K` 打开 **推土机配置** 界面（需主手持有推土机）。也可通过 **ModMenu** 进入（需安装 [ModMenu](https://modrinth.com/mod/modmenu)，可选依赖）。
+按 `K` 打开 **推土机配置** 界面（**需主手**持有推土机；副手持有时 K 无效，但 G/U/V 等快捷键仍可用）。也可通过 **ModMenu** 进入（需安装 [ModMenu](https://modrinth.com/mod/modmenu)，可选依赖）。
 
 ### ModMenu 入口
 

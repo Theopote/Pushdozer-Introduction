@@ -1,0 +1,22 @@
+name: Docs Check
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify documentation consistency
+        run: node scripts/verify-docs.mjs
+
+      - name: Check Markdown links (optional)
+        continue-on-error: true
+        run: |
+          npm install -g markdown-link-check
+          find docs -name '*.md' -print0 | xargs -0 -I{} markdown-link-check {} -q

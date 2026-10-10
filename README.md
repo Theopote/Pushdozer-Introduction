@@ -1,14 +1,25 @@
 # Pushdozer
 
-Pushdozer 模组使用文档（适用于 v1.1.1+）。共 15 章：速查表、名词解释、配置界面、界面视觉指南、8 种工作模式、14 篇操作教程、参数调优、水岸预设、参考手册、配置示例等。
+Pushdozer 模组使用文档（适用于 v1.1.1+）。涵盖安装入门、配置界面、8 种工作模式、笔刷与标高、实战教程、多人游戏、参数参考与常见问题等主题。
 
 在线文档：[https://theopote.github.io/Pushdozer-Introduction](https://theopote.github.io/Pushdozer-Introduction)
 
 ## 链接
 
-- 模组源码：[github.com/theopote/pushdozer](https://github.com/theopote/pushdozer)
-- 下载：[Modrinth](https://modrinth.com/mod/pushdozer)
+- 模组源码：[github.com/Theopote/Pushdozer_Mod](https://github.com/Theopote/Pushdozer_Mod)
+- 下载（推荐）：[Modrinth](https://modrinth.com/mod/pushdozer)
+- 下载（备选）：[GitHub Releases](https://github.com/Theopote/Pushdozer_Mod/releases)
 - Discord：[discord.gg/jjr8WmPZ](https://discord.gg/jjr8WmPZ)
+
+## 下载说明
+
+| 来源 | 说明 |
+|------|------|
+| **Modrinth** | 官方推荐下载入口，提供稳定发布版 |
+| **GitHub Releases**（Pushdozer_Mod） | 模组源码仓库的发布页 |
+| 本仓库根目录 `pushdozer-1.0.0.jar` | 旧版示例文件，**不是**当前 v1.1.1 正式安装包，请勿直接使用 |
+
+文档版本与模组 `fabric.mod.json` 中的版本号对齐（当前 **v1.1.1**，Minecraft 1.21.11）。
 
 ## 本地预览
 
@@ -21,4 +32,4 @@ npx serve .
 python -m http.server 3000
 ```
 
-然后访问 `http://localhost:3000`。
+然后访问 `http://localhost:3000`（默认中文首页）。

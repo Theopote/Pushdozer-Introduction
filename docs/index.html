@@ -18,7 +18,7 @@
       // 文档标题
       name: 'Pushdozer',
       // GitHub 仓库地址
-      repo: 'theopote/pushdozer',
+      repo: 'Theopote/Pushdozer_Mod',
       // 文档版本
       version: 'v1.1.1',
       // 加载侧边栏
@@ -38,12 +38,12 @@
       // 路由模式
       routerMode: 'hash',
       // 首页文件
-      homepage: '/en/README.md',
+      homepage: '/zh/README.md',
       // 别名配置
       nameLink: {
         '/zh/': '#/zh/',
         '/en/': '#/en/',
-        '/': '#/en/'
+        '/': '#/zh/'
       },
 
       // 搜索配置
@@ -100,7 +100,7 @@
 
           hook.mounted(function() {
             if (!vm.route.path || vm.route.path === '/') {
-              window.location.hash = '#/en/README.md';
+              window.location.hash = '#/zh/README.md';
             }
           });
         }

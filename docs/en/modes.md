@@ -1,187 +1,349 @@
 # Work Modes
 
-Pushdozer provides **8 work modes**, cycled with the `G` key. Each mode has its own **Config** sub-panel in the configuration screen.
+Pushdozer provides **8** player-facing work modes. Press `G` to cycle. Each mode has its own **Config** sub-panel in the configuration screen.
 
-> **Execution**: Hold the Pushdozer and **right-click** the target location. Shortcuts only change settings — they do not modify terrain directly.
+> **Execution**: Hold the Pushdozer in your main hand or offhand, **right-click** the target. Shortcuts only change settings—they do not modify terrain directly.
+
+## Player overview
+
+| Mode | Changes height | Changes materials | Spawns vegetation | Typical use |
+|------|:--------------:|:-----------------:|:-----------------:|-------------|
+| Excavate | — | Removes blocks | — | Clear, dig, level |
+| Place | Optional fill | Yes | — | Fill holes, surface |
+| Smooth (4 variants) | Yes | May rebuild surface | — | Level, raise/lower |
+| Surface Roughen | Yes | May rebuild surface | — | Naturalize flat terrain |
+| Surface Convert | No | Yes | — | Mix grass/sand/stone |
+| Bone Meal | Depends on growth | Depends on result | Can promote | Fertilize crops/plants |
+| Batch Plant | — | — | Yes | Forests, vegetation |
+| Shoreline Process | Usually no | Yes | Optional | Naturalize shores |
+
+**G cycle order**: Excavate → Place → Smooth → Surface Roughen → Surface Convert → Bone Meal → Batch Plant → Shoreline Process
 
 ---
 
 ## Excavate
 
-Removes blocks within the brush area.
+**What it does**: Removes blocks in the brush volume, replacing them with air.
 
-### Basics
+### How to use
 
-- Configure a block whitelist via **Select blocks to destroy**
-- Only whitelisted blocks are broken; unbreakable blocks (hardness &lt; 0) are always skipped
-- The default whitelist is **empty** — you must select at least one block type before excavate will have any effect
+1. Select **Excavate**
+2. Click **Select blocks to destroy** and check at least one block type
+3. Choose brush shape and size; set height mode (optional)
+4. Right-click the target
 
-### Height Restrictions
+### Height limits
 
-| Height Mode | Excavatable Range |
-|-------------|-------------------|
-| No Limit | Any Y level |
-| Follow Player | Y ≥ player foot level |
-| Lock / Custom | Y ≥ locked height + 1 |
+| Height mode | Excavation range |
+|-------------|------------------|
+| No Limit | Any Y |
+| Follow Player | Y ≥ foot level |
+| Lock / Custom | Y ≥ lockedHeight + 1 |
 
-Blocks outside the allowed range are **silently skipped** with no chat message.
+Blocks outside the range are **silently skipped**—no chat message.
 
-**Use cases**: Leveling terrain, digging tunnels, clearing specific blocks, creating underground spaces.
+### Common mistakes
+
+- **Whitelist defaults to empty**—nothing breaks until you select breakable blocks
+- Unbreakable blocks (hardness &lt; 0, e.g. bedrock) are always skipped
+- Blocks on the **ignore list** are never broken
+- Air is not "excavated"
+
+### Recommended settings
+
+| Scenario | Brush | Height |
+|----------|-------|--------|
+| Level foundation | Box 10×10×3 | Lock Player Height |
+| Horizontal tunnel | Box 4×4×4 | No Limit |
+| Clear surface vegetation | Small sphere | Follow Player |
 
 ---
 
 ## Place
 
-Fills the brush area with natural terrain blocks.
+**What it does**: Fills air and replaceable soft blocks with natural blocks in the brush volume.
 
-### Placement Methods
+### How to use
 
-| Method | Description |
-|--------|-------------|
-| **Adaptive Biome** | Automatically selects suitable blocks based on biome and ground context (e.g., grass in plains, sand in deserts) |
-| **Natural Block** | Manually specify one natural block via the block selection screen |
+1. Select **Place**
+2. Choose **Adaptive Biome** or **Select natural block**
+3. Right-click the target area
 
-### Height Restrictions
+### Place modes
 
-| Height Mode | Placeable Range |
+| Mode | Description |
+|------|-------------|
+| **Adaptive Biome** | Auto-selects blocks from biome/context (e.g. stone near lava, sandstone near sand) |
+| **Natural Block** | Manually specified natural block |
+
+### Height limits
+
+| Height mode | Placement range |
 |-------------|-----------------|
-| No Limit | Any Y level |
-| Follow Player | Y ≤ player foot level − 1 |
-| Lock / Custom | Y ≤ locked height |
+| No Limit | Any Y |
+| Follow Player | Y ≤ foot level − 1 |
+| Lock / Custom | Y ≤ lockedHeight |
 
-Combine with **Lock Player Height** to quickly create flat surfaces.
+### Common mistakes
 
-**Use cases**: Filling gaps, creating platforms, restoring damaged terrain.
+- Place does not replace solid blocks (except blocks in replacement rules, e.g. decorative plants)
+- Height limits are opposite to Excavate: place **below**, excavate **above**
+
+### Recommended settings
+
+| Scenario | Mode | Height |
+|----------|------|--------|
+| Quick surface | Adaptive Biome | Lock Player Height |
+| Artificial platform | Specific natural block | Lock / Custom |
 
 ---
 
 ## Smooth
 
-Reshapes terrain elevation within the brush area. The config panel offers **4 smooth variants** (single-select):
+**What it does**: Reshapes terrain height in the brush; surface blocks may rebuild as height changes.
 
-| Variant | Description |
-|---------|-------------|
-| **Standard Smooth** | Spatial Gaussian blur that flattens bumps and fills depressions. Strong per-stroke change; best for general terrain leveling |
-| **Adaptive Smooth** | Multi-scale bilateral filter that removes fine noise while preserving hills and large landforms |
-| **Raise** | Builds a Gaussian mound at the brush center and blends with surroundings |
-| **Lower** | Creates a depression at the brush center and blends with surroundings |
+### How to use
 
-### Strength Parameters
+1. Select **Smooth**, click **Config**
+2. Choose one of 4 variants
+3. Adjust strength
+4. Right-click; repeat to refine
 
-- **Smooth Strength** (Standard / Adaptive): 0.1–1.0, controls smoothing force per operation
-- **Raise/Lower Depth** (Raise / Lower): 0.1–1.0, scales max height change per stroke
+### Four variants
 
-Hover over each variant button for detailed tooltips.
+| Variant | Algorithm | Best for |
+|---------|-----------|----------|
+| **Standard** | Spatial Gaussian blur, larger per-pass change | Large-scale leveling |
+| **Adaptive** | Multi-scale bilateral filter, preserves large contours | Mountain softening, denoising |
+| **Raise** | Gaussian bump at brush center | Local elevation, small hills |
+| **Lower** | Depression at brush center | Local lowering, hollows |
 
-**Use cases**: Leveling foundations, softening hillside transitions, local raise/lower, naturalizing artificial terrain.
+Hover variant buttons for detailed tooltips.
+
+### Strength parameters
+
+| Parameter | Range | Variants |
+|-----------|-------|----------|
+| Smooth strength | 0.1–1.0 | Standard, Adaptive |
+| Raise/Lower depth | 0.1–1.0 | Raise, Lower |
+
+### Height limits
+
+Follows general height filtering (see [Height System](height.md)).
+
+### Common mistakes
+
+- Standard smooth changes more per pass than Adaptive—large areas may alter overall shape
+- Raise/Lower are directional, not uniform elevation across the whole brush
+
+### Recommended settings
+
+| Scenario | Variant | Strength |
+|----------|---------|----------|
+| Building site leveling | Standard | 0.5–0.8 |
+| Denoise while preserving mountains | Adaptive | 0.3–0.5 |
+| Small hill | Raise | 0.3–0.6 |
+| Small hollow | Lower | 0.3–0.6 |
 
 ---
 
 ## Surface Roughen
 
-Adds natural elevation variation to overly flat surfaces (changes height).
+**What it does**: Reshapes toward a smooth baseline, then adds Perlin noise for natural micro-relief.
+
+### How to use
+
+1. Select **Surface Roughen**, click **Config**
+2. Adjust roughness and reshape strength
+3. Right-click
 
 ### Parameters
 
-| Parameter | Description |
-|-----------|-------------|
-| **Roughness Strength** | Controls peak noise height (strength 1.0 ≈ ±5 blocks before material modifiers) |
-| **Smoothing Intensity** | Reshapes terrain toward a smoothed baseline before noise (0 = keep shape, 1 = full smooth reshape) |
-| **Auto Scale** | On by default; automatically adjusts noise based on brush radius |
+| Parameter | Range | Description |
+|-----------|-------|-------------|
+| **Roughness strength** | 0.1–2.0 | Noise peak; 1.0 ≈ ±5 blocks (material modifiers apply) |
+| **Smoothing intensity** | 0.1–1.0 | How much to reshape toward smooth baseline before noise |
+| **Auto scale** | On/Off | Default on; scales noise to brush radius |
 
-When **Auto Scale** is off, manual controls appear:
+When **Auto scale** is off, adjust noise frequency, persistence, and octaves manually. **Reset** restores defaults.
 
-- **Noise Frequency** — high values create fine variation, low values create smooth variation
-- **Noise Persistence** — relative strength of multi-layer noise
-- **Noise Octaves** — number of noise layers; more layers add complexity but may impact performance
+### Height limits
 
-A **Reset** button at the bottom restores defaults.
+Follows general height filtering.
 
-**Use cases**: Making flat artificial terrain look more natural, creating subtle elevation variation.
+### Common mistakes
+
+- Unlike Smooth: Surface Roughen **adds** noise intentionally
+- High roughness on large brushes can produce dramatic terrain
+
+### Recommended settings
+
+| Scenario | Roughness | Reshape |
+|----------|-----------|---------|
+| Subtle naturalization | 0.3–0.5 | 0.3 |
+| Pronounced relief | 0.7–1.0 | 0.5 |
 
 ---
 
 ## Surface Convert
 
-Replaces surface column blocks within the brush area with a mix of configured materials (**does not change elevation**).
+**What it does**: Replaces surface column blocks by configured percentages—**no Y change**.
 
-### Block Configuration
+### How to use
 
-- Up to **5 block types** with individual percentages
-- **Add Block** / **Normalize** buttons manage proportions
-- Default: grass block 100%
+1. Select **Surface Convert**, click **Config**
+2. Add up to 5 blocks with percentages
+3. Choose distribution mode
+4. Right-click
 
-### Distribution Modes
+### Blocks and distribution
 
-| Mode | Description |
-|------|-------------|
-| **Natural Patches** | Uses seeded noise for coherent material clusters — more natural-looking |
-| **Random Scatter** | Independent random pick per column — more uniform distribution |
+| Option | Description |
+|--------|-------------|
+| Block list | Up to 5 types with percentages; default grass 100% |
+| **Natural Patches** | Fixed-seed Perlin noise for coherent patches |
+| **Scatter** | Independent random per column |
+| **Allow artificial** | Off by default; containers and block entities always protected |
 
-### Other Options
+### Height limits
 
-- **Allow Artificial Surfaces**: Off by default. When on, non-natural solid blocks may convert; containers and block entities stay protected
-- If no valid target blocks are configured, the operation is skipped with a chat message
+Follows general height filtering; only surface columns are replaced.
 
-**Use cases**: Mixed surfaces (patchy grass and dirt), material transitions, blending paths with surroundings.
+### Common mistakes
+
+- Skipped with message if no valid target blocks configured
+- Does not excavate or fill—only swaps materials
+
+### Recommended settings
+
+| Scenario | Blocks | Distribution |
+|----------|--------|--------------|
+| Patchy grass | Grass 60% + dirt 40% | Natural Patches |
+| Even mix | Multiple blocks equal share | Scatter |
 
 ---
 
 ## Bone Meal
 
-Applies bone meal effects to plants within the brush area.
+**What it does**: Applies bone meal to eligible plants in the brush volume.
 
-- No additional configuration
-- Works on grass, flowers, crops, saplings, etc.
-- Changes are tracked for undo/redo
+### How to use
 
-**Use cases**: Quick greening, crop growth, vegetation recovery.
+1. Select **Bone Meal** (no Config panel)
+2. Right-click
+
+### Targets
+
+- Vegetation on grass, dirt, farmland, sand
+- Grass, flowers, crops, saplings, etc.
+- Large operations process ~48 positions per tick
+
+### Height limits
+
+Follows general height filtering.
+
+### Common mistakes
+
+- No effect on non-plants or non-fertilizable blocks
+- Tree growth may extend beyond brush bounds (undo records actual changes)
+
+### Recommended settings
+
+| Scenario | Brush |
+|----------|-------|
+| Fertilize crops | Box over farmland |
+| Quick greening | Medium sphere |
 
 ---
 
 ## Batch Plant
 
-Batch-plants vegetation within the brush area.
+**What it does**: Spawns plants in the brush by density and cluster settings.
 
-### Plant Types
+### How to use
+
+1. Select **Batch Plant**, click **Config**
+2. Choose plant type and parameters
+3. Right-click
+
+### Plant types
 
 | Type | Description |
 |------|-------------|
-| **Trees** | Choose species (oak, spruce, birch, etc.) or **Biome Adaptive** |
-| **Flowers** | Choose flower group (plains, forest, etc.) or **Biome Adaptive** |
-| **Grass** | Plant grass, ferns, and low vegetation |
-| **Custom** | Freely select from the plant list |
+| **Trees** | Species or **Biome Adaptive**; uses Minecraft tree generator |
+| **Flowers** | Flower group or **Biome Adaptive** |
+| **Grass** | Grass, ferns, low vegetation |
+| **Custom** | Free selection; defaults used if list empty |
 
-### Additional Parameters
+### Other parameters
 
-- **Plant Density** — controls how many plants per area (10–100%)
-- **Cluster Scale** — controls clustering vs. spread (higher = more scattered)
+| Parameter | Range | Description |
+|-----------|-------|-------------|
+| Plant density | 10–100% | Spawn probability per area |
+| Cluster scale | Adjustable | Spatial clustering (different algorithms for trees vs flowers) |
 
-**Use cases**: Quick afforestation, flower fields, ecosystem restoration.
+Config file **respectBiomes** defaults on but is not exposed in UI.
+
+### Height limits
+
+Follows general height filtering; plants need valid ground.
+
+### Common mistakes
+
+- Low density may spawn almost nothing
+- Trees need vertical clearance
+
+### Recommended settings
+
+| Scenario | Type | Density | Cluster |
+|----------|------|---------|---------|
+| Sparse forest | Trees, Biome Adaptive | 30–40% | Default |
+| Flower field | Flowers, Plains | 50–70% | Medium |
+| Meadow | Grass | 40–60% | Default |
 
 ---
 
 ## Shoreline Process
 
-Creates natural shoreline material transitions at water edges (**replaces surface blocks only — does not reshape elevation**).
+**What it does**: Detects water edges in the brush and blends surface materials inland by horizontal distance; optional vegetation. **Does not change terrain height.**
 
-### Shoreline Types
+### How to use
+
+1. Select **Shoreline Process**, click **Config**
+2. Choose shoreline type and width
+3. Right-click water's edge
+
+### Shoreline types
 
 | Type | Description |
 |------|-------------|
-| **Beach** | Sand shoreline for oceans and lakes |
-| **Embankment** | Dirt/grass transition shoreline |
-| **Adaptive** | Auto-selects by biome (e.g., red sand in deserts, snow in snowy biomes) |
-| **Muddy** | Swamp-style muddy shoreline |
-| **Rocky** | Rocky shoreline |
-| **Custom** | Choose your own blocks and plants |
+| **Beach** | Sand transition for oceans and lakes |
+| **Embankment** | Dirt/grass transition |
+| **Adaptive** | Biome-based (e.g. red sand in desert, snow in snowy biomes) |
+| **Muddy** | Swamp style |
+| **Rocky** | Rocky shore |
+| **Custom** | Custom blocks and plants |
 
-### Additional Parameters
+### Other parameters
 
-- **Shoreline Width** — horizontal transition distance from water (1–10 blocks)
-- **Plant Vegetation** / **Vegetation Density** — auto-plant suitable vegetation (not available for Custom type)
-- **Operate Above/Below Height** — requires a non–No Limit height mode first; the two toggles are mutually exclusive
+| Parameter | Range | Description |
+|-----------|-------|-------------|
+| Shoreline width | 1–10 blocks | Horizontal transition from water |
+| Vegetation | On/Off | Disabled for Custom type |
+| Vegetation density | 0–100% | Plant density on shore |
+| Above/Below height | Mutually exclusive | Requires non–No Limit height mode |
 
-**Use cases**: Beaches, riverbanks, lake ecosystems, swamp shorelines.
+### Common mistakes
 
-> Biome-specific material rules: [Shoreline Presets](shoreline.md). Step-by-step guides: [Tutorials](workflows.md).
+- Brush must cover the **water–land boundary**—clicking deep water alone may have no effect
+- Does not reshape shore slope—only replaces surface blocks
+
+### Recommended settings
+
+| Scenario | Type | Width |
+|----------|------|-------|
+| Lake beach | Beach | 3–4 |
+| Natural riverbank | Adaptive | 3–5 |
+| Swamp | Muddy | 4–6 |
+
+> Material and biome rules: [Shoreline Presets](shoreline.md). Step-by-step: [Workflows](workflows.md).

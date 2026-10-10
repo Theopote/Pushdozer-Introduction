@@ -1,6 +1,29 @@
 # Visual UI Guide
 
-Layout reference to help you find features quickly. Screenshots can be added in future doc updates.
+Layout reference to help you find features quickly. In-game screenshots live under `docs/assets/`; below are layout diagrams and a capture checklist.
+
+## Screenshot checklist
+
+Each major feature needs **before → brush preview → after** shots with key parameters labeled:
+
+| Priority | Feature | Suggested settings | Asset path |
+|----------|---------|-------------------|------------|
+| 1 | Excavate + Box leveling | Excavate, Box 8×8×3, Lock height | `assets/workflows/excavate-*.png` |
+| 2 | Smooth variant comparison | Same terrain, 4 variants | `assets/modes/smooth-*.png` |
+| 3 | Brush select & preview | Sphere wireframe → result | `assets/shapes/sphere-*.png` |
+| 4 | Shoreline presets | Beach/Embankment/Muddy/Rocky | `assets/modes/shoreline-*.png` |
+| 5 | Batch plant | Trees, 30% density | `assets/modes/plant-*.png` |
+
+Placeholder (replace with in-game captures):
+
+![Excavate workflow placeholder](../assets/workflows/excavate-placeholder.svg)
+
+| Feature | Placeholder |
+|---------|-------------|
+| Smooth variants | ![](../assets/modes/smooth-placeholder.svg) |
+| Sphere brush | ![](../assets/shapes/sphere-placeholder.svg) |
+| Shoreline presets | ![](../assets/modes/shoreline-placeholder.svg) |
+| Batch plant | ![](../assets/modes/plant-placeholder.svg) |
 
 ---
 

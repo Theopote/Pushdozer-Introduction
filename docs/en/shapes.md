@@ -4,7 +4,20 @@ Pushdozer offers 8 brush geometries. Select via the **Brush Shape** button in th
 
 **Cycle order**: Sphere → Box → Octahedron → Cylinder → Cone → Ellipsoid → Tetrahedron → Triangular Prism
 
-All size sliders range from **1–64 blocks**. Click **Config** to open the sub-panel for the current geometry.
+All size sliders range from **1–64 blocks** (size parameters, not final coverage diameter). Click **Config** to open the sub-panel for the current geometry.
+
+## Spatial overview (side view)
+
+```
+        Cone                 Cylinder (Y-axis)         Box
+          /\                    |===|              +-------+
+         /  \                   |   |              |       |
+        /    \                  |   |              |       |
+       /______\                 |___|              +-------+
+   base radius + height      radius + height    L × W × H
+```
+
+> **Cylinder orientation**: extends along the **Y axis** and **does not rotate** with your view. Use Box for horizontal passages; use Cylinder for vertical shafts and circular vertical spaces.
 
 ---
 
@@ -12,17 +25,18 @@ All size sliders range from **1–64 blocks**. Click **Config** to open the sub-
 
 | Item | Description |
 |------|-------------|
-| **Parameters** | Radius |
+| **Parameters** | `sphereRadius` |
 | **Shape** | Spherical volume centered on target |
+| **Coverage** | Radius R → diameter 2R (R=64 → diameter 128) |
 | **Best for** | Hills, caves, smooth transitions, batch planting |
 
 ## Box
 
 | Item | Description |
 |------|-------------|
-| **Parameters** | Length (X), width (Z), height (Y) |
-| **Shape** | Axis-aligned rectangular prism |
-| **Best for** | Foundations, platforms, tunnels, large-scale leveling |
+| **Parameters** | `length` (X), `width` (Z), `boxHeight` (Y) |
+| **Shape** | Axis-aligned rectangular prism (no rotation) |
+| **Best for** | Foundations, platforms, **horizontal tunnels**, large-scale leveling |
 
 ## Octahedron
 
@@ -36,9 +50,9 @@ All size sliders range from **1–64 blocks**. Click **Config** to open the sub-
 
 | Item | Description |
 |------|-------------|
-| **Parameters** | Radius, height |
-| **Shape** | Vertical cylinder |
-| **Best for** | Vertical shafts, tower bases, columnar spaces |
+| **Parameters** | `cylinderRadius`, `cylinderHeight` |
+| **Shape** | **Y-axis vertical** cylinder (no rotation) |
+| **Best for** | Vertical shafts, tower bases, columnar spaces; **not** horizontal round tunnels |
 
 ## Cone
 
@@ -92,5 +106,5 @@ All size sliders range from **1–64 blocks**. Click **Config** to open the sub-
 
 - Brush volume grows with size — larger brushes affect more blocks per operation
 - Start small, verify results, then increase
-- Any dimension > 64 is rejected on multiplayer servers
+- Multiplayer servers validate brush **size parameters** (not final coverage diameter): each axis/radius must be 1–64; a sphere with radius 64 can cover up to 128 blocks across
 - Use **None** preview mode with large brushes to reduce client load

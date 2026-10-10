@@ -11,18 +11,99 @@
 
 ## 配置结构
 
-配置文件分为 5 个主要部分：
+配置文件分为 5 个主要部分。以下为 **结构示意**（含 `{ ... }` 占位符），**不可直接复制粘贴**：
 
 ```json
 {
   "workMode": "EXCAVATE",
-  "brush": { ... },
-  "surface": { ... },
-  "planting": { ... },
-  "shoreline": { ... },
-  "preview": { ... }
+  "brush": { "...": "见下方完整示例" },
+  "surface": { "...": "见下方完整示例" },
+  "planting": { "...": "见下方完整示例" },
+  "shoreline": { "...": "见下方完整示例" },
+  "preview": { "...": "见下方完整示例" }
 }
 ```
+
+### 完整默认配置（可直接复制）
+
+以下为模组首次运行时的默认配置结构，所有字段均合法，可直接保存为 `pushdozer_config.json`：
+
+```json
+{
+  "workMode": "EXCAVATE",
+  "brush": {
+    "breakableBlockIds": [],
+    "ignoredBlockIds": [],
+    "shape": "Box",
+    "geometryType": "BOX",
+    "radius": 5,
+    "length": 5,
+    "width": 5,
+    "height": 5,
+    "sphereRadius": 5,
+    "cylinderRadius": 5,
+    "coneRadius": 5,
+    "octahedronRadius": 5,
+    "tetrahedronEdgeLength": 5,
+    "triangularPrismSideLength": 5,
+    "boxHeight": 5,
+    "cylinderHeight": 5,
+    "coneHeight": 5,
+    "sphereHeight": 5,
+    "octahedronHeight": 5,
+    "tetrahedronHeight": 5,
+    "triangularPrismHeight": 5,
+    "ellipsoidHeight": 5,
+    "lockedHeight": 0,
+    "heightMode": "NO_LIMIT",
+    "isLockedOnceMode": false
+  },
+  "surface": {
+    "placeMode": "ADAPTIVE_BIOME",
+    "selectedNaturalBlockId": "minecraft:stone",
+    "smoothStrength": 0.5,
+    "directionalSmoothBlend": 0.65,
+    "smoothVariant": "ADAPTIVE",
+    "roughnessStrength": 0.5,
+    "smoothingIntensity": 0.5,
+    "noiseAutoScale": true,
+    "noiseFrequency": 0.02,
+    "noisePersistence": 0.5,
+    "noiseOctaves": 4,
+    "surfaceConvertBlocks": [
+      { "blockId": "minecraft:grass_block", "percentage": 100.0 }
+    ],
+    "convertArtificialSurfaces": false,
+    "surfaceConvertDistribution": "PATCHY",
+    "surfaceConvertMaxBelowSurfaceDepth": 3
+  },
+  "planting": {
+    "plantType": "TREES",
+    "customPlantBlockIds": [],
+    "plantDensity": 0.3,
+    "selectedTree": "BIOME_ADAPTIVE",
+    "selectedFlowerGroup": "BIOME_ADAPTIVE",
+    "respectBiomes": true,
+    "clusterScale": 0.05
+  },
+  "shoreline": {
+    "shorelineType": "ADAPTIVE",
+    "shorelineWidth": 3,
+    "plantVegetationEnabled": true,
+    "vegetationDensity": 0.1,
+    "customShorelineBlocks": [],
+    "customShorelinePlants": [],
+    "shorelineHeightAboveEnabled": false,
+    "shorelineHeightBelowEnabled": false
+  },
+  "preview": {
+    "displayMode": "WIREFRAME",
+    "maxOperationDistance": 20
+  }
+}
+```
+
+> `noiseSeed` 由模组在运行时自动生成，无需手动填写。
 
 ### workMode — 工作模式
 

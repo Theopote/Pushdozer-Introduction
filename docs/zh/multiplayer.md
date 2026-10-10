@@ -28,12 +28,17 @@ flowchart LR
 - 大操作使用批处理队列，每批最多 500 方块，100ms 延迟
 - 撤销/重做操作同样同步到所有客户端
 
-### 权限
+### 权限（已在代码中确认）
 
-- **默认所有玩家可用**，无需特殊权限
-- 笔刷尺寸上限为 64 格（服务端校验）
-- 可与区域保护插件（如 WorldGuard）配合使用
-- 支持扩展自定义权限系统
+- **默认所有玩家可用**——服务端仅校验笔刷尺寸参数是否在 1–64 范围内（见 `OperationPermissions`）
+- 小操作（≤50 方块）立即同步；更大操作分批发送（每批 ≤500 方块，100ms 间隔）
+- 撤销历史：每名玩家每维度 30 步，冷却 300 ms
+
+### 区域保护与插件（未经官方测试）
+
+- Pushdozer **未内置** WorldGuard 等区域保护插件的适配
+- 服务器管理员可通过区域保护插件 **间接** 限制方块修改，但 Pushdozer 与具体插件的兼容性 **未经官方测试**
+- 若操作被拒绝，请检查是否在保护区域内，并查看动作栏提示
 
 ### 独立配置
 
@@ -94,10 +99,18 @@ flowchart LR
 
 ## 服务器管理员
 
-Pushdozer 无需额外服务端配置即可运行。如需限制使用范围，可：
+Pushdozer 无需额外服务端配置即可运行。
 
-1. 通过区域保护插件限制特定区域的方块修改
-2. 扩展 `OperationPermissions` 集成 LuckPerms 等权限系统
-3. 监控服务器日志中的 Pushdozer 操作记录
+### 玩家向建议
 
-详细技术文档参见模组仓库中的 [MULTIPLAYER_SUPPORT.md](https://github.com/theopote/pushdozer/blob/main/docs/MULTIPLAYER_SUPPORT.md)。
+1. 通过区域保护插件限制特定区域的方块修改（需服主自行配置与测试）
+2. 监控服务器日志中的 Pushdozer 操作记录
+
+### 开发者 / 扩展点（非内置功能）
+
+以下为源码中的 **可扩展接口**，并非开箱即用：
+
+- 扩展 `OperationPermissions` 集成 LuckPerms 等权限系统
+- 自定义批处理与网络同步策略
+
+详细技术文档参见模组仓库中的 [MULTIPLAYER_SUPPORT.md](https://github.com/Theopote/Pushdozer_Mod/blob/main/docs/MULTIPLAYER_SUPPORT.md)。注意：该文档部分数值可能滞后于当前代码，**以源码为准**（当前笔刷上限为 64，非 100）。

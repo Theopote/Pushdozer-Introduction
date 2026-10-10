@@ -1,21 +1,29 @@
 # Quick Reference
 
-One-page cheat sheet for Pushdozer.
+One-page cheat sheet for Pushdozer. Full parameters, in-game messages, and mechanics: [Reference Manual](reference.md).
 
 ---
+
+## Interaction Requirements
+
+| Action | Main hand | Offhand |
+|--------|-----------|---------|
+| Shortcuts G/U/V/↑↓/Ctrl+Z/Y | ✓ | ✓ |
+| Config screen K | ✓ | ✗ |
+| Right-click execute | ✓ | ✓ |
 
 ## Key Bindings
 
 | Key | Action |
 |-----|--------|
-| `K` | Config screen (main hand) |
+| `K` | Config screen (main hand only) |
 | `G` | Cycle work mode |
 | `U` | Cycle brush shape |
 | `V` | Cycle display mode |
 | `↑`/`↓` | Distance ±1 |
 | `Ctrl+Z` | Undo (30 steps) |
 | `Ctrl+Y` | Redo |
-| **Right-click** | Execute |
+| **Right-click** | Execute (main or offhand) |
 
 ---
 

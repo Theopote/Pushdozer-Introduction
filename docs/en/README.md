@@ -19,7 +19,11 @@
 
 ## Download & Feedback
 
-- [GitHub Releases](https://github.com/theopote/pushdozer/releases)
-- [Modrinth](https://modrinth.com/mod/pushdozer)
-- [Submit an Issue](https://github.com/theopote/pushdozer/issues)
-- [Discord Community](https://discord.gg/jjr8WmPZ)
+| Source | Notes |
+|--------|-------|
+| [Modrinth](https://modrinth.com/mod/pushdozer) | **Recommended** stable release downloads |
+| [GitHub Releases](https://github.com/Theopote/Pushdozer_Mod/releases) | Releases from the mod source repository |
+| [Submit an Issue](https://github.com/Theopote/Pushdozer_Mod/issues) | Bug reports and feature requests |
+| [Discord Community](https://discord.gg/jjr8WmPZ) | Community chat |
+
+> The `pushdozer-1.0.0.jar` in this documentation repo root is an old sample, not the current v1.1.1 build. Download from Modrinth or GitHub Releases instead.

@@ -29,12 +29,12 @@ Typical terrain editing tasks with recommended settings. Adjust to your needs.
 |------|--------|
 | 1 | Work mode → **Excavate** |
 | 2 | Select breakable: stone, deepslate, dirt, etc. |
-| 3 | Brush → **Box** or **Cylinder** (width 3–5, height 3) |
+| 3 | Brush → **Box** (length 3–5, width 3–5, height 3) |
 | 4 | Height → **No Limit** |
 | 5 | Operation distance → 30–40 |
 | 6 | Face tunnel direction, walk and right-click |
 
-**Tip**: Cylinder for round tunnels; Box for square mineshafts.
+**Tip**: Use **Box** for horizontal passages. The cylinder extends along the Y axis and does not rotate with your view—repeated horizontal clicks create overlapping vertical columns. Cylinders suit **vertical shafts and circular vertical spaces**, not standard horizontal round tunnels.
 
 ---
 
