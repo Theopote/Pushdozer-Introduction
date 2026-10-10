@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <rect width="800" height="200" fill="#1a1a2e"/>
+  <text x="400" y="25" fill="#aaa" font-family="sans-serif" font-size="13" text-anchor="middle">Shoreline presets  placeholder for Beach / Embankment / Muddy / Rocky</text>
+  <rect x="20" y="40" width="180" height="140" fill="#c2b280" stroke="#555"/><text x="110" y="115" fill="#333" font-size="13" text-anchor="middle">Beach</text>
+  <rect x="215" y="40" width="180" height="140" fill="#5a4a3a" stroke="#555"/><text x="305" y="115" fill="#fff" font-size="13" text-anchor="middle">Embankment</text>
+  <rect x="410" y="40" width="180" height="140" fill="#4a3c2a" stroke="#555"/><text x="500" y="115" fill="#fff" font-size="13" text-anchor="middle">Muddy</text>
+  <rect x="605" y="40" width="180" height="140" fill="#666" stroke="#555"/><text x="695" y="115" fill="#fff" font-size="13" text-anchor="middle">Rocky</text>
+</svg>

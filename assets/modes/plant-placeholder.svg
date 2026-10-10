@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="200" viewBox="0 0 600 200">
+  <rect width="600" height="200" fill="#1a1a2e"/>
+  <text x="300" y="25" fill="#aaa" font-family="sans-serif" font-size="13" text-anchor="middle">Batch plant  before / after placeholder</text>
+  <rect x="30" y="40" width="250" height="140" fill="#2d5016" stroke="#555"/>
+  <text x="155" y="115" fill="#fff" font-size="14" text-anchor="middle">Before (bare)</text>
+  <rect x="320" y="40" width="250" height="140" fill="#1e4d1e" stroke="#555"/>
+  <circle cx="380" cy="100" r="8" fill="#0a5"/><circle cx="420" cy="90" r="10" fill="#0a5"/>
+  <circle cx="460" cy="105" r="7" fill="#0a5"/><circle cx="500" cy="95" r="9" fill="#0a5"/>
+  <text x="445" y="155" fill="#fff" font-size="14" text-anchor="middle">After (trees)</text>
+</svg>

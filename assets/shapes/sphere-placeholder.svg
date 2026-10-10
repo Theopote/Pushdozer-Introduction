@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <rect width="900" height="300" fill="#1a1a2e"/>
+  <text x="450" y="30" fill="#aaa" font-family="sans-serif" font-size="14" text-anchor="middle">Sphere brush  select / wireframe preview / placed result</text>
+  <rect x="30" y="60" width="250" height="210" fill="#2a2a3a" stroke="#666"/>
+  <text x="155" y="170" fill="#ccc" font-size="14" text-anchor="middle">Radial menu</text>
+  <rect x="325" y="60" width="250" height="210" fill="#1e3a5f" stroke="#666"/>
+  <ellipse cx="450" cy="165" rx="70" ry="70" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="5"/>
+  <text x="450" y="240" fill="#ccc" font-size="12" text-anchor="middle">Wireframe preview</text>
+  <rect x="620" y="60" width="250" height="210" fill="#2d5016" stroke="#666"/>
+  <ellipse cx="745" cy="165" rx="70" ry="70" fill="#4aa3df" opacity="0.8"/>
+  <text x="745" y="240" fill="#ccc" font-size="12" text-anchor="middle">Solid result</text>
+</svg>

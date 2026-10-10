@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="200" viewBox="0 0 800 200">
+  <rect width="800" height="200" fill="#1a1a2e"/>
+  <text x="400" y="25" fill="#aaa" font-family="sans-serif" font-size="13" text-anchor="middle">Smooth variants  placeholder for 4 in-game comparison shots</text>
+  <rect x="20" y="40" width="175" height="140" fill="#2d5016" stroke="#555"/><text x="107" y="115" fill="#fff" font-size="13" text-anchor="middle">Standard</text>
+  <rect x="215" y="40" width="175" height="140" fill="#1e4d2b" stroke="#555"/><text x="302" y="115" fill="#fff" font-size="13" text-anchor="middle">Adaptive</text>
+  <rect x="410" y="40" width="175" height="140" fill="#3d5a1e" stroke="#555"/><text x="497" y="115" fill="#fff" font-size="13" text-anchor="middle">Raise</text>
+  <rect x="605" y="40" width="175" height="140" fill="#1a3d1a" stroke="#555"/><text x="692" y="115" fill="#fff" font-size="13" text-anchor="middle">Lower</text>
+</svg>
