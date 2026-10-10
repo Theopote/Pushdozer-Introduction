@@ -26,8 +26,8 @@
 ## Building Assistance
 
 - **Lock height + Box**: Perfect flat foundations
-- **Surface Convert**: Mixed material surfaces (e.g., stone path meeting grass)
-- **Layered excavation**: Dig down layer by layer to avoid breaking too many blocks at once
+- **Surface Convert**: Mixed material surfaces (e.g., stone path meeting grass); patchy mode for natural transitions, scatter for even mixing
+- **Smooth variants**: Standard for large-scale leveling, Adaptive to preserve landforms, Raise/Lower for local adjustments
 
 ## Performance
 

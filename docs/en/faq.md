@@ -27,10 +27,12 @@ Confirm:
 Possible causes:
 
 1. Not holding the Pushdozer tool (main hand or offhand)
-2. Incorrect work mode or brush configuration
-3. Target is beyond max operation distance
-4. Brush size exceeds allowed range (1–64)
-5. Height restriction blocking the operation (e.g., can't break below locked height)
+2. **Excavate mode has no blocks selected** — the default whitelist is empty; open **Select blocks to destroy** and check at least one block type
+3. Incorrect work mode or brush configuration
+4. Target is beyond max operation distance
+5. Brush size exceeds allowed range (1–64)
+6. Height restriction blocking the operation (out-of-range blocks are silently skipped with no message)
+7. Target area is busy with another edit (multiplayer servers)
 
 ### Key bindings don't work
 

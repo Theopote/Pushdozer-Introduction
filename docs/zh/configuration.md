@@ -45,7 +45,7 @@
 | `radius` / `length` / `width` / `height` 等 | 各几何体尺寸参数 | `5` |
 | `heightMode` | 标高模式 | `NO_LIMIT` |
 | `lockedHeight` | 锁定/自定义标高值 | `0` |
-| `breakableBlockIds` | 允许破坏的方块 ID 列表 | `[]`（空=全部） |
+| `breakableBlockIds` | 允许破坏的方块 ID 列表 | `[]`（**空=不可破坏任何方块**，需手动选择） |
 | `ignoredBlockIds` | 忽略不破坏的方块 ID 列表 | 水、岩浆、空气等 |
 
 **geometryType 可选值**：`SPHERE`、`BOX`、`OCTAHEDRON`、`CYLINDER`、`CONE`、`ELLIPSOID`、`TETRAHEDRON`、`TRIANGULAR_PRISM`
@@ -67,10 +67,15 @@
 | `noisePersistence` | 噪声持久性 | `0.5` |
 | `noiseOctaves` | 噪声八度数 | `4` |
 | `surfaceConvertBlocks` | 表层转换方块列表及占比 | 草方块 100% |
+| `surfaceConvertDistribution` | 分布模式 | `PATCHY`（自然斑块） |
+| `convertArtificialSurfaces` | 允许转换人工方块 | `false` |
+| `surfaceConvertMaxBelowSurfaceDepth` | 地表以下转换深度 | `3` |
 
 **placeMode 可选值**：`ADAPTIVE_BIOME`、`NATURAL_BLOCK`
 
-**smoothVariant 可选值**：`ADAPTIVE`、`RAISE`、`LOWER`
+**smoothVariant 可选值**：`STANDARD`、`ADAPTIVE`、`RAISE`、`LOWER`
+
+**surfaceConvertDistribution 可选值**：`PATCHY`（自然斑块）、`SCATTER`（随机散布）
 
 ### planting — 种植
 
@@ -89,7 +94,7 @@
 
 | 字段 | 说明 | 默认值 |
 |------|------|--------|
-| `shorelineType` | 水岸类型 | `BEACH` |
+| `shorelineType` | 水岸类型 | `ADAPTIVE` |
 | `shorelineWidth` | 水岸宽度 | - |
 | `plantVegetationEnabled` | 启用植被种植 | - |
 | `vegetationDensity` | 植被密度 | - |

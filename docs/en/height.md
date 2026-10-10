@@ -20,8 +20,8 @@ The height system controls vertical restrictions during Pushdozer operations. Co
 
 - Locks height to the player's foot level when the mode is activated
 - Height no longer follows player movement after locking
-- Excavate: Cannot break blocks below the locked height
-- Place: Blocks are placed at or below the locked height
+- Excavate: Can only break blocks at **locked height + 1 and above**
+- Place: Blocks can only be placed at **locked height and below**
 - Best for creating precise flat surfaces
 
 ### Custom Height (CUSTOM)
@@ -37,7 +37,7 @@ Shoreline Process mode provides two additional height toggles:
 - **Operate Above Height**: Shoreline processing only above the current height
 - **Operate Below Height**: Shoreline processing only below the current height
 
-These are mutually exclusive, allowing precise control over which height layer shoreline effects apply to.
+These are mutually exclusive, allowing precise control over which height layer shoreline effects apply to. A reference height mode (Follow Player, Custom, or Lock Once) must be set first — they are disabled while height mode is No Limit.
 
 ## Quick Reference
 

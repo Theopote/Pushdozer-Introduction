@@ -36,8 +36,8 @@ Click the **Brush Shape** button in the config screen to directly select any geo
 
 ## Ellipsoid
 
-- **Parameters**: Radius, height
-- **Shape**: Stretched ellipsoid with different horizontal and vertical proportions
+- **Parameters**: Length, width, height (X, Z, and Y axis radii respectively)
+- **Shape**: Ellipsoid with independently adjustable axes
 - **Best for**: Flat or tall natural hills
 
 ## Tetrahedron

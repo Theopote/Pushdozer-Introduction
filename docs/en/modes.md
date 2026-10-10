@@ -1,110 +1,185 @@
 # Work Modes
 
-Pushdozer provides 8 work modes cycled with the `G` key. Each mode has its own configuration panel accessible from the config screen.
+Pushdozer provides **8 work modes**, cycled with the `G` key. Each mode has its own **Config** sub-panel in the configuration screen.
+
+> **Execution**: Hold the Pushdozer and **right-click** the target location. Shortcuts only change settings — they do not modify terrain directly.
+
+---
 
 ## Excavate
 
 Removes blocks within the brush area.
 
-- **Right-click** to excavate
+### Basics
+
 - Configure a block whitelist via **Select blocks to destroy**
-- Supports **layered excavation**: dig down layer by layer with configurable depth
-- Combine with height modes to restrict vertical range
+- Only whitelisted blocks are broken; unbreakable blocks (hardness &lt; 0) are always skipped
+- The default whitelist is **empty** — you must select at least one block type before excavate will have any effect
+
+### Height Restrictions
+
+| Height Mode | Excavatable Range |
+|-------------|-------------------|
+| No Limit | Any Y level |
+| Follow Player | Y ≥ player foot level |
+| Lock / Custom | Y ≥ locked height + 1 |
+
+Blocks outside the allowed range are **silently skipped** with no chat message.
 
 **Use cases**: Leveling terrain, digging tunnels, clearing specific blocks, creating underground spaces.
 
+---
+
 ## Place
 
-Places surface blocks within the brush area.
+Fills the brush area with natural terrain blocks.
 
-- **Adaptive Biome**: Automatically selects natural blocks based on the current biome (e.g., grass in plains, sand in deserts)
-- **Natural Block**: Manually specify a single natural block type
-- Use **Lock Player Height** to create flat surfaces
+### Placement Methods
+
+| Method | Description |
+|--------|-------------|
+| **Adaptive Biome** | Automatically selects suitable blocks based on biome and ground context (e.g., grass in plains, sand in deserts) |
+| **Natural Block** | Manually specify one natural block via the block selection screen |
+
+### Height Restrictions
+
+| Height Mode | Placeable Range |
+|-------------|-----------------|
+| No Limit | Any Y level |
+| Follow Player | Y ≤ player foot level − 1 |
+| Lock / Custom | Y ≤ locked height |
+
+Combine with **Lock Player Height** to quickly create flat surfaces.
 
 **Use cases**: Filling gaps, creating platforms, restoring damaged terrain.
 
+---
+
 ## Smooth
 
-Smooths terrain elevation within the brush area.
-
-Three smooth variants available in the config panel:
+Reshapes terrain elevation within the brush area. The config panel offers **4 smooth variants** (single-select):
 
 | Variant | Description |
 |---------|-------------|
-| Adaptive Smooth | Automatically raises or lowers based on surrounding terrain |
-| Smooth Raise | Smoothly elevates terrain upward |
-| Smooth Lower | Smoothly depresses terrain downward |
+| **Standard Smooth** | Spatial Gaussian blur that flattens bumps and fills depressions. Strong per-stroke change; best for general terrain leveling |
+| **Adaptive Smooth** | Multi-scale bilateral filter that removes fine noise while preserving hills and large landforms |
+| **Raise** | Builds a Gaussian mound at the brush center and blends with surroundings |
+| **Lower** | Creates a depression at the brush center and blends with surroundings |
 
-- **Smooth Strength**: Controls smoothing force per operation (0.0–1.0)
-- **Smoothing Intensity**: 0 = preserve original shape, 1 = full reshape
+### Strength Parameters
 
-**Use cases**: Softening hillside transitions, refining building foundations, naturalizing artificial terrain.
+- **Smooth Strength** (Standard / Adaptive): 0.1–1.0, controls smoothing force per operation
+- **Raise/Lower Depth** (Raise / Lower): 0.1–1.0, scales max height change per stroke
+
+Hover over each variant button for detailed tooltips.
+
+**Use cases**: Leveling foundations, softening hillside transitions, local raise/lower, naturalizing artificial terrain.
+
+---
 
 ## Surface Roughen
 
-Adds natural micro-variation to flat surfaces.
+Adds natural elevation variation to overly flat surfaces (changes height).
 
-- **Roughness Strength**: Controls amplitude of variation
-- **Noise parameters**: Frequency, persistence, octaves (texture detail)
-- **Auto Scale**: Automatically adjusts noise based on brush radius
+### Parameters
+
+| Parameter | Description |
+|-----------|-------------|
+| **Roughness Strength** | Controls peak noise height (strength 1.0 ≈ ±5 blocks before material modifiers) |
+| **Smoothing Intensity** | Reshapes terrain toward a smoothed baseline before noise (0 = keep shape, 1 = full smooth reshape) |
+| **Auto Scale** | On by default; automatically adjusts noise based on brush radius |
+
+When **Auto Scale** is off, manual controls appear:
+
+- **Noise Frequency** — high values create fine variation, low values create smooth variation
+- **Noise Persistence** — relative strength of multi-layer noise
+- **Noise Octaves** — number of noise layers; more layers add complexity but may impact performance
+
+A **Reset** button at the bottom restores defaults.
 
 **Use cases**: Making flat artificial terrain look more natural, creating subtle elevation variation.
 
+---
+
 ## Surface Convert
 
-Replaces surface blocks within the brush area with a mix of configured blocks by percentage.
+Replaces surface column blocks within the brush area with a mix of configured materials (**does not change elevation**).
 
-- Add multiple blocks with individual percentages
-- **Normalize** button evenly distributes percentages
-- Defaults to grass block (100%)
+### Block Configuration
 
-**Use cases**: Mixed surfaces (patchy grass and dirt), material transitions.
+- Up to **5 block types** with individual percentages
+- **Add Block** / **Normalize** buttons manage proportions
+- Default: grass block 100%
+
+### Distribution Modes
+
+| Mode | Description |
+|------|-------------|
+| **Natural Patches** | Uses seeded noise for coherent material clusters — more natural-looking |
+| **Random Scatter** | Independent random pick per column — more uniform distribution |
+
+### Other Options
+
+- **Allow Artificial Surfaces**: Off by default. When on, non-natural solid blocks may convert; containers and block entities stay protected
+- If no valid target blocks are configured, the operation is skipped with a chat message
+
+**Use cases**: Mixed surfaces (patchy grass and dirt), material transitions, blending paths with surroundings.
+
+---
 
 ## Bone Meal
 
 Applies bone meal effects to plants within the brush area.
 
-- No additional configuration needed
+- No additional configuration
 - Works on grass, flowers, crops, saplings, etc.
+- Changes are tracked for undo/redo
 
 **Use cases**: Quick greening, crop growth, vegetation recovery.
+
+---
 
 ## Batch Plant
 
 Batch-plants vegetation within the brush area.
 
-| Plant Type | Description |
-|------------|-------------|
-| Trees | Choose species (oak, spruce, birch, etc.) or biome adaptive |
-| Flowers | Choose flower group (plains, forest, etc.) or biome adaptive |
-| Grass | Plant grass, ferns, and low vegetation |
-| Custom | Freely select from the plant list |
+### Plant Types
 
-Additional parameters:
+| Type | Description |
+|------|-------------|
+| **Trees** | Choose species (oak, spruce, birch, etc.) or **Biome Adaptive** |
+| **Flowers** | Choose flower group (plains, forest, etc.) or **Biome Adaptive** |
+| **Grass** | Plant grass, ferns, and low vegetation |
+| **Custom** | Freely select from the plant list |
 
-- **Plant Density**: Controls how many plants per area
-- **Cluster Scale**: Controls how clustered or spread out plants are
-- **Respect Biomes**: When enabled, only plants in suitable biomes
+### Additional Parameters
+
+- **Plant Density** — controls how many plants per area (10–100%)
+- **Cluster Scale** — controls clustering vs. spread (higher = more scattered)
 
 **Use cases**: Quick afforestation, flower fields, ecosystem restoration.
 
+---
+
 ## Shoreline Process
 
-Creates natural shoreline transitions at water edges.
+Creates natural shoreline material transitions at water edges (**replaces surface blocks only — does not reshape elevation**).
 
-| Shoreline Type | Description |
-|----------------|-------------|
-| Beach | Sand shoreline for oceans and lakes |
-| Embankment | Dirt/grass transition shoreline |
-| Adaptive | Auto-selects by biome (e.g., red sand in deserts, snow in snowy biomes) |
-| Muddy | Swamp-style muddy shoreline |
-| Rocky | Rocky shoreline |
-| Custom | Choose your own blocks and plants |
+### Shoreline Types
 
-Additional parameters:
+| Type | Description |
+|------|-------------|
+| **Beach** | Sand shoreline for oceans and lakes |
+| **Embankment** | Dirt/grass transition shoreline |
+| **Adaptive** | Auto-selects by biome (e.g., red sand in deserts, snow in snowy biomes) |
+| **Muddy** | Swamp-style muddy shoreline |
+| **Rocky** | Rocky shoreline |
+| **Custom** | Choose your own blocks and plants |
 
-- **Shoreline Width**: Transition zone width; replacement probability decreases with distance from water
-- **Plant Vegetation** / **Vegetation Density**: Auto-plant suitable vegetation along the shore
-- **Operate Above/Below Height**: Restrict shoreline processing to a height range
+### Additional Parameters
+
+- **Shoreline Width** — horizontal transition distance from water (1–10 blocks)
+- **Plant Vegetation** / **Vegetation Density** — auto-plant suitable vegetation (not available for Custom type)
+- **Operate Above/Below Height** — requires a non–No Limit height mode first; the two toggles are mutually exclusive
 
 **Use cases**: Beaches, riverbanks, lake ecosystems, swamp shorelines.

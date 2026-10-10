@@ -26,6 +26,21 @@
 4. Choose a work mode, brush geometry, and parameters
 5. **Right-click** the target location to execute
 
+## Config Screen Overview
+
+Press `K` to open the configuration screen. Main areas from top to bottom:
+
+| Area | Description |
+|------|-------------|
+| **Brush Shape** | Select one of 8 geometries; click **Config** to adjust size (1–64) |
+| **Work Mode** | Select one of 8 modes; click **Config** for mode-specific settings |
+| **Display Mode** | Switch brush preview (Wireframe / Point Cloud / Surface / None) |
+| **Max Operation Distance** | Slider or `↑`/`↓` keys (1–99, default 20) |
+| **Height Config** | Set height restriction mode |
+| **Save and Close** | Save settings and close the screen |
+
+You can also access the config screen via the Pushdozer button in the ModMenu mod list.
+
 ## Default Key Bindings
 
 All shortcuts require holding the Pushdozer tool. Rebind them in Minecraft's control settings.
@@ -47,9 +62,10 @@ All shortcuts require holding the Pushdozer tool. Rebind them in Minecraft's con
 ### Level Ground
 
 1. Select **Excavate** mode
-2. Choose **Box** brush and adjust length, width, height
-3. Set height mode to **Lock Player Height**
-4. Right-click the ground
+2. Click **Select blocks to destroy** and check at least one block type to clear (e.g., dirt, stone)
+3. Choose **Box** brush and adjust length, width, height
+4. Set height mode to **Lock Player Height**
+5. Right-click the ground
 
 ### Place Surface Blocks
 

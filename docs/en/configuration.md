@@ -45,7 +45,7 @@ The config file has 5 main sections:
 | `radius` / `length` / `width` / `height` etc. | Size parameters per geometry | `5` |
 | `heightMode` | Height mode | `NO_LIMIT` |
 | `lockedHeight` | Locked/custom height value | `0` |
-| `breakableBlockIds` | Allowed block IDs | `[]` (empty = all) |
+| `breakableBlockIds` | Allowed block IDs | `[]` (**empty = no blocks breakable**; must select manually) |
 | `ignoredBlockIds` | Blocks to skip | water, lava, air, etc. |
 
 **geometryType values**: `SPHERE`, `BOX`, `OCTAHEDRON`, `CYLINDER`, `CONE`, `ELLIPSOID`, `TETRAHEDRON`, `TRIANGULAR_PRISM`
@@ -67,10 +67,15 @@ The config file has 5 main sections:
 | `noisePersistence` | Noise persistence | `0.5` |
 | `noiseOctaves` | Noise octaves | `4` |
 | `surfaceConvertBlocks` | Surface convert blocks & percentages | grass block 100% |
+| `surfaceConvertDistribution` | Distribution mode | `PATCHY` (natural patches) |
+| `convertArtificialSurfaces` | Allow artificial surface conversion | `false` |
+| `surfaceConvertMaxBelowSurfaceDepth` | Depth below surface for conversion | `3` |
 
 **placeMode values**: `ADAPTIVE_BIOME`, `NATURAL_BLOCK`
 
-**smoothVariant values**: `ADAPTIVE`, `RAISE`, `LOWER`
+**smoothVariant values**: `STANDARD`, `ADAPTIVE`, `RAISE`, `LOWER`
+
+**surfaceConvertDistribution values**: `PATCHY` (natural patches), `SCATTER` (random scatter)
 
 ### planting — Planting
 
@@ -89,7 +94,7 @@ The config file has 5 main sections:
 
 | Field | Description | Default |
 |-------|-------------|---------|
-| `shorelineType` | Shoreline type | `BEACH` |
+| `shorelineType` | Shoreline type | `ADAPTIVE` |
 | `shorelineWidth` | Shoreline width | - |
 | `plantVegetationEnabled` | Enable vegetation | - |
 | `vegetationDensity` | Vegetation density | - |
