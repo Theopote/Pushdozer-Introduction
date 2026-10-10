@@ -62,8 +62,11 @@ function checkStaleLinks() {
 
 function checkDefaultHomepage() {
   const html = readFileSync(join(DOCS, 'index.html'), 'utf8');
-  if (!html.includes("homepage: '/zh/README.md'")) {
-    errors.push('docs/index.html default homepage should be /zh/README.md');
+  if (!/homepage:\s*['"]\/?zh\/README\.md['"]/.test(html)) {
+    errors.push('docs/index.html default homepage should be zh/README.md');
+  }
+  if (!html.includes('Pushdozer-Introduction')) {
+    errors.push('docs/index.html should set basePath for GitHub Pages subpath');
   }
   if (!html.includes('Theopote/Pushdozer_Mod')) {
     errors.push('docs/index.html repo should be Theopote/Pushdozer_Mod');
