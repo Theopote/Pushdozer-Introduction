@@ -45,14 +45,14 @@
 
 | 几何体 | 滑动条 | 对应配置字段 |
 |--------|--------|-------------|
-| 球体 | 半径 | `radius` / `sphereRadius` |
-| 长方体 | 长度、宽度、高度 | `length`, `width`, `height` |
+| 球体 | 半径 | `sphereRadius` |
+| 长方体 | 长度、宽度、高度 | `length`, `width`, `boxHeight` |
 | 正八面体 | 半径 | `octahedronRadius` |
-| 圆柱体 | 半径、高度 | `cylinderRadius`, `height` |
-| 圆锥体 | 半径、高度 | `coneRadius`, `height` |
+| 圆柱体 | 半径、高度 | `cylinderRadius`, `cylinderHeight` |
+| 圆锥体 | 半径、高度 | `coneRadius`, `coneHeight` |
 | 椭球体 | 长度、宽度、高度 | `length`, `width`, `ellipsoidHeight` |
-| 正四面体 | 边长 | `edgeLength` |
-| 三棱柱 | 边长、高度 | `sideLength`, `height` |
+| 正四面体 | 边长、高度 | `tetrahedronEdgeLength`, `tetrahedronHeight` |
+| 三棱柱 | 边长、高度 | `triangularPrismSideLength`, `triangularPrismHeight` |
 
 子面板底部 **完成** 按钮保存并关闭。
 

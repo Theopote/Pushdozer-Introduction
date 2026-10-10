@@ -19,6 +19,8 @@ Typical terrain editing tasks with recommended settings. Adjust to your needs.
 
 **Tip**: For surface-only removal, reduce height and select only grass/dirt.
 
+![Level site: before → preview → after (placeholder — replace with in-game shots)](../assets/workflows/excavate-placeholder.svg)
+
 ---
 
 ## 2. Dig a Tunnel
@@ -34,7 +36,20 @@ Typical terrain editing tasks with recommended settings. Adjust to your needs.
 | 5 | Operation distance → 30–40 |
 | 6 | Face tunnel direction, walk and right-click |
 
-**Tip**: Use **Box** for horizontal passages. The cylinder extends along the Y axis and does not rotate with your view—repeated horizontal clicks create overlapping vertical columns. Cylinders suit **vertical shafts and circular vertical spaces**, not standard horizontal round tunnels.
+**Tip**: Use **Box** for horizontal passages. The cylinder extends along the Y axis and does not rotate with your view—repeated horizontal clicks create overlapping vertical columns. Cylinders suit **vertical shafts and circular vertical spaces**, not standard horizontal round tunnels. See [Brush Geometries · Cylinder](shapes.md#cylinder).
+
+---
+
+## 2b. Dig a Vertical Shaft (Cylinder)
+
+**Goal**: A circular vertical space going downward.
+
+| Step | Action |
+|------|--------|
+| 1 | Work mode → **Excavate** |
+| 2 | Brush → **Cylinder** (radius 2–4, `cylinderHeight` 3–5) |
+| 3 | Height → **No Limit** |
+| 4 | Stand above the shaft, right-click downward; repeat in sections |
 
 ---
 

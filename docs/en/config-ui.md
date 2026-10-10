@@ -45,14 +45,14 @@ Each geometry has its own sub-panel. All sliders range from **1–64**:
 
 | Geometry | Sliders | Config Fields |
 |----------|---------|---------------|
-| Sphere | Radius | `radius` / `sphereRadius` |
-| Box | Length, width, height | `length`, `width`, `height` |
+| Sphere | Radius | `sphereRadius` |
+| Box | Length, width, height | `length`, `width`, `boxHeight` |
 | Octahedron | Radius | `octahedronRadius` |
-| Cylinder | Radius, height | `cylinderRadius`, `height` |
-| Cone | Radius, height | `coneRadius`, `height` |
+| Cylinder | Radius, height | `cylinderRadius`, `cylinderHeight` |
+| Cone | Radius, height | `coneRadius`, `coneHeight` |
 | Ellipsoid | Length, width, height | `length`, `width`, `ellipsoidHeight` |
-| Tetrahedron | Edge length | `edgeLength` |
-| Triangular Prism | Side length, height | `sideLength`, `height` |
+| Tetrahedron | Edge length, height | `tetrahedronEdgeLength`, `tetrahedronHeight` |
+| Triangular Prism | Side length, height | `triangularPrismSideLength`, `triangularPrismHeight` |
 
 The **Done** button at the bottom saves and closes.
 

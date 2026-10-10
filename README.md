@@ -33,3 +33,13 @@ python -m http.server 3000
 ```
 
 然后访问 `http://localhost:3000`（默认中文首页）。
+
+## 文档一致性检查
+
+在仓库根目录运行（可选设置 `MOD_SOURCE` 指向 Pushdozer_Mod 源码）：
+
+```bash
+node scripts/verify-docs.mjs
+```
+
+CI 会在 push/PR 时自动运行 `.github/workflows/docs-check.yml`。

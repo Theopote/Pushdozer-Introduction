@@ -18,6 +18,16 @@ A reference of common in-game terms and concepts used in Pushdozer.
 | **Block Whitelist** | Blocks allowed to break in Excavate mode; empty by default |
 | **Undo / Redo** | Revert or re-apply recent terrain edits; 30 steps per player |
 
+### Interaction requirements
+
+| Action | Main hand | Offhand |
+|--------|-----------|---------|
+| Shortcuts G/U/V/↑↓/Ctrl+Z/Y | ✓ | ✓ |
+| Config screen K | ✓ | ✗ |
+| Right-click execute | ✓ | ✓ |
+
+See [Getting Started · Interaction Requirements](basic.md#interaction-requirements).
+
 ---
 
 ## Work Modes
