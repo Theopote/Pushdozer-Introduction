@@ -1,56 +1,78 @@
 # Brush Geometries
 
-Pushdozer offers 8 brush geometries, cycled with the `U` key. Each has independent size parameters ranging from **1–64 blocks**.
+Pushdozer offers 8 brush geometries. Select via the **Brush Shape** button in the config screen, or cycle with `U`.
 
-Click the **Brush Shape** button in the config screen to directly select any geometry and adjust its parameters.
+**Cycle order**: Sphere → Box → Octahedron → Cylinder → Cone → Ellipsoid → Tetrahedron → Triangular Prism
+
+All size sliders range from **1–64 blocks**. Click **Config** to open the sub-panel for the current geometry.
+
+---
 
 ## Sphere
 
-- **Parameters**: Radius
-- **Shape**: Uniform spherical area
-- **Best for**: Hills, caves, smooth transitions, batch planting
+| Item | Description |
+|------|-------------|
+| **Parameters** | Radius |
+| **Shape** | Spherical volume centered on target |
+| **Best for** | Hills, caves, smooth transitions, batch planting |
 
 ## Box
 
-- **Parameters**: Length, width, height
-- **Shape**: Rectangular prism
-- **Best for**: Foundations, platforms, flat rectangular areas, tunnels
+| Item | Description |
+|------|-------------|
+| **Parameters** | Length (X), width (Z), height (Y) |
+| **Shape** | Axis-aligned rectangular prism |
+| **Best for** | Foundations, platforms, tunnels, large-scale leveling |
 
 ## Octahedron
 
-- **Parameters**: Radius
-- **Shape**: Diamond-shaped 3D area, symmetric top and bottom
-- **Best for**: Peak terrain, special architectural forms
+| Item | Description |
+|------|-------------|
+| **Parameters** | Radius |
+| **Shape** | Diamond-shaped 3D volume, symmetric top and bottom |
+| **Best for** | Peak terrain, special forms |
 
 ## Cylinder
 
-- **Parameters**: Radius, height
-- **Shape**: Vertical cylinder
-- **Best for**: Vertical shafts, tower bases, columnar spaces
+| Item | Description |
+|------|-------------|
+| **Parameters** | Radius, height |
+| **Shape** | Vertical cylinder |
+| **Best for** | Vertical shafts, tower bases, columnar spaces |
 
 ## Cone
 
-- **Parameters**: Radius, height
-- **Shape**: Wide base tapering to a point
-- **Best for**: Volcano cones, pyramid-shaped terrain
+| Item | Description |
+|------|-------------|
+| **Parameters** | Radius (base), height |
+| **Shape** | Wide base tapering to a point |
+| **Best for** | Volcano cones, pyramid-shaped terrain |
 
 ## Ellipsoid
 
-- **Parameters**: Length, width, height (X, Z, and Y axis radii respectively)
-- **Shape**: Ellipsoid with independently adjustable axes
-- **Best for**: Flat or tall natural hills
+| Item | Description |
+|------|-------------|
+| **Parameters** | Length (X radius), width (Z radius), height (Y radius) |
+| **Shape** | Ellipsoid with independently adjustable axes |
+| **Best for** | Flat or tall natural hills |
 
 ## Tetrahedron
 
-- **Parameters**: Edge length
-- **Shape**: Pyramid-shaped tetrahedral area
-- **Best for**: Special geometric forms, pointed terrain
+| Item | Description |
+|------|-------------|
+| **Parameters** | Edge length |
+| **Shape** | Pyramid-shaped tetrahedral volume |
+| **Best for** | Pointed terrain, special geometric forms |
 
 ## Triangular Prism
 
-- **Parameters**: Side length, height
-- **Shape**: Triangular cross-section prism
-- **Best for**: Wedge terrain, triangular bases
+| Item | Description |
+|------|-------------|
+| **Parameters** | Side length (triangle base), height |
+| **Shape** | Prism with equilateral triangle cross-section |
+| **Best for** | Wedge terrain, triangular bases |
+
+---
 
 ## Selection Guide
 
@@ -62,5 +84,13 @@ Click the **Brush Shape** button in the config screen to directly select any geo
 | Pointed peaks | Cone, Tetrahedron |
 | Regular building bases | Box, Triangular Prism |
 | Vegetation planting | Sphere (natural distribution) |
+| Shoreline processing | Box or Sphere (move along shore) |
 
-> **Performance tip**: Larger brushes affect more blocks per operation. Start small and increase gradually. The server validates brush size and will prompt you if it exceeds the allowed range.
+---
+
+## Performance Tips
+
+- Brush volume grows with size — larger brushes affect more blocks per operation
+- Start small, verify results, then increase
+- Any dimension > 64 is rejected on multiplayer servers
+- Use **None** preview mode with large brushes to reduce client load

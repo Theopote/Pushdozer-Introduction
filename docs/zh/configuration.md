@@ -82,22 +82,31 @@
 | 字段 | 说明 | 默认值 |
 |------|------|--------|
 | `plantType` | 种植类型 | `TREES` |
-| `plantDensity` | 种植密度 | - |
-| `clusterScale` | 团簇大小 | - |
+| `plantDensity` | 种植密度（0.1–1.0） | `0.3`（30%） |
+| `clusterScale` | 团簇大小 | `0.05`（5%） |
 | `selectedTree` | 树种 | `BIOME_ADAPTIVE` |
 | `selectedFlowerGroup` | 花组 | `BIOME_ADAPTIVE` |
+| `customPlantBlockIds` | 自定义植物 ID 列表 | `[]` |
 | `respectBiomes` | 遵守生物群系规则 | `true` |
 
 **plantType 可选值**：`TREES`、`FLOWERS`、`GRASS`、`CUSTOM`
+
+**selectedTree 可选值**：`OAK`、`SPRUCE`、`BIRCH`、`JUNGLE`、`ACACIA`、`DARK_OAK`、`BIOME_ADAPTIVE`
+
+**selectedFlowerGroup 可选值**：`PLAINS_FLOWERS`、`FOREST_FLOWERS`、`ALL_FLOWERS`、`BIOME_ADAPTIVE`
 
 ### shoreline — 水岸
 
 | 字段 | 说明 | 默认值 |
 |------|------|--------|
 | `shorelineType` | 水岸类型 | `ADAPTIVE` |
-| `shorelineWidth` | 水岸宽度 | - |
-| `plantVegetationEnabled` | 启用植被种植 | - |
-| `vegetationDensity` | 植被密度 | - |
+| `shorelineWidth` | 水岸宽度（1–10） | `3` |
+| `plantVegetationEnabled` | 启用植被种植 | `true` |
+| `vegetationDensity` | 植被密度（0–1） | `0.1`（10%） |
+| `customShorelineBlocks` | 自定义方块 ID 列表 | `[]` |
+| `customShorelinePlants` | 自定义植物 ID 集合 | `[]` |
+| `shorelineHeightAboveEnabled` | 仅在标高以上操作 | `false` |
+| `shorelineHeightBelowEnabled` | 仅在标高以下操作 | `false` |
 
 **shorelineType 可选值**：`BEACH`、`EMBANKMENT`、`ADAPTIVE`、`MUDDY`、`ROCKY`、`CUSTOM`
 

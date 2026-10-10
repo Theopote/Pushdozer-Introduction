@@ -82,22 +82,31 @@ The config file has 5 main sections:
 | Field | Description | Default |
 |-------|-------------|---------|
 | `plantType` | Plant type | `TREES` |
-| `plantDensity` | Plant density | - |
-| `clusterScale` | Cluster scale | - |
+| `plantDensity` | Plant density (0.1–1.0) | `0.3` (30%) |
+| `clusterScale` | Cluster scale | `0.05` (5%) |
 | `selectedTree` | Tree species | `BIOME_ADAPTIVE` |
 | `selectedFlowerGroup` | Flower group | `BIOME_ADAPTIVE` |
+| `customPlantBlockIds` | Custom plant ID list | `[]` |
 | `respectBiomes` | Respect biome rules | `true` |
 
 **plantType values**: `TREES`, `FLOWERS`, `GRASS`, `CUSTOM`
+
+**selectedTree values**: `OAK`, `SPRUCE`, `BIRCH`, `JUNGLE`, `ACACIA`, `DARK_OAK`, `BIOME_ADAPTIVE`
+
+**selectedFlowerGroup values**: `PLAINS_FLOWERS`, `FOREST_FLOWERS`, `ALL_FLOWERS`, `BIOME_ADAPTIVE`
 
 ### shoreline — Shoreline
 
 | Field | Description | Default |
 |-------|-------------|---------|
 | `shorelineType` | Shoreline type | `ADAPTIVE` |
-| `shorelineWidth` | Shoreline width | - |
-| `plantVegetationEnabled` | Enable vegetation | - |
-| `vegetationDensity` | Vegetation density | - |
+| `shorelineWidth` | Shoreline width (1–10) | `3` |
+| `plantVegetationEnabled` | Enable vegetation | `true` |
+| `vegetationDensity` | Vegetation density (0–1) | `0.1` (10%) |
+| `customShorelineBlocks` | Custom block ID list | `[]` |
+| `customShorelinePlants` | Custom plant ID set | `[]` |
+| `shorelineHeightAboveEnabled` | Operate above height only | `false` |
+| `shorelineHeightBelowEnabled` | Operate below height only | `false` |
 
 **shorelineType values**: `BEACH`, `EMBANKMENT`, `ADAPTIVE`, `MUDDY`, `ROCKY`, `CUSTOM`
 

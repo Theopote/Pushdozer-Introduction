@@ -65,6 +65,12 @@ The server validates brush size within 1–64. If you see an out-of-range messag
 2. Keep brush sizes reasonable
 3. Discuss server performance with the admin
 
+## Terminology & Docs
+
+### Where can I look up terms?
+
+See the [Glossary](glossary.md). For every config screen control, see [Config Screen](config-ui.md). For defaults and limits, see [Reference Manual](reference.md).
+
 ## Configuration
 
 ### Where is the config file?

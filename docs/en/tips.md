@@ -1,50 +1,111 @@
 # Tips & Best Practices
 
-## Basic Workflow
+## Standard Workflow
 
-1. Select a work mode
-2. Choose brush geometry and adjust size
-3. Set height mode
-4. Adjust mode-specific parameters (smooth strength, plant density, etc.)
-5. Confirm display mode and operation distance
-6. Right-click to execute
+1. Hold the Pushdozer (main or offhand for operations; main hand required for config screen)
+2. Press `K` to open the config screen
+3. Select **Work Mode** → click **Config** for mode settings
+4. Select **Brush Shape** → click **Config** for size
+5. Set **Height Mode** (if you need flat surfaces or layered work)
+6. Confirm **Display Mode** and **Operation Distance**
+7. Click **Save and Close**
+8. Aim and **right-click** to execute
 
-### Undo & Redo
+---
 
-- Each player has up to **30 steps** of independent history
-- `Ctrl+Z` to undo, `Ctrl+Y` to redo
-- Undo/redo syncs to all clients in multiplayer
-- Test on a small area before large operations
+## Undo & Redo
 
-## Terrain Shaping Workflow
+- Up to **30 steps** of independent history per player
+- `Ctrl+Z` undo, `Ctrl+Y` redo
+- Minimum 300 ms between undo/redo actions
+- Undo only affects your own history; syncs to all clients in multiplayer
+- **Tip**: Test on a small area before large operations
 
-1. **Rough shaping**: Large box or sphere for quick form
-2. **Refinement**: Smaller brush with smooth mode for details
-3. **Naturalization**: Surface roughen for micro-variation
-4. **Ecology**: Batch plant or shoreline process for vegetation
+---
+
+## Scenario Workflows
+
+### Level Building Site
+
+1. Excavate → select breakable blocks (dirt, stone, grass, etc.)
+2. Box brush with appropriate L×W, small height
+3. **Lock Player Height**
+4. Right-click section by section
+
+### Fill Depressions / Create Platform
+
+1. Place → **Adaptive Biome** or specific block
+2. Box brush
+3. **Lock Player Height**
+4. Right-click to fill
+
+### Hill Shaping
+
+1. **Rough**: Large sphere or box + excavate/place
+2. **Level**: Standard smooth, strength 0.5–0.8
+3. **Preserve forms**: Adaptive smooth, strength 0.3–0.5
+4. **Naturalize**: Surface roughen, low strength (0.3–0.5) + Auto Scale on
+5. **Green**: Batch plant or bone meal
+
+### Mixed Material Surface
+
+1. Surface Convert → add 2–3 blocks (grass, dirt, coarse dirt)
+2. Adjust percentages → **Normalize**
+3. Distribution: **Natural Patches**
+4. Use small brush, multiple strokes for natural edges
+
+### Riverbank Slope
+
+1. Shoreline → **Embankment** or **Adaptive**
+2. Width 3–5, enable vegetation
+3. Box brush, move along river right-clicking
+4. To limit height: set **Follow Player** or **Custom** height mode
+
+### Quick Afforestation
+
+1. Batch Plant → Trees → Biome Adaptive
+2. Sphere brush, density 30–50%, moderate cluster
+3. Right-click multiple times to cover area
+
+### Local Raise / Lower
+
+1. Smooth → **Raise** or **Lower**
+2. Small sphere brush
+3. Depth 0.3–0.6, multiple strokes to build effect
+
+---
 
 ## Building Assistance
 
 - **Lock height + Box**: Perfect flat foundations
-- **Surface Convert**: Mixed material surfaces (e.g., stone path meeting grass); patchy mode for natural transitions, scatter for even mixing
-- **Smooth variants**: Standard for large-scale leveling, Adaptive to preserve landforms, Raise/Lower for local adjustments
+- **Surface Convert + Patchy**: Natural stone path / grass transitions
+- **Smooth variants**: Standard for large areas, Adaptive to preserve landforms, Raise/Lower for local tweaks
+- **No Limit + Cylinder**: Precise vertical shafts
+
+---
 
 ## Performance
 
-- Brush sizes range from 1–64; start small
-- Prefer **Wireframe** display mode; use **Surface** when you need a clearer volume preview
+- Start brush size at 1 and increase gradually
+- Prefer **Wireframe** preview; use **Surface** when you need volume clarity
 - Execute large operations in batches
-- Notify other players before large operations on multiplayer servers
+- Notify teammates before large ops on multiplayer servers
+- If stuttering: reduce brush → switch to **None** → lower operation distance
+
+---
 
 ## Multiplayer Collaboration
 
 - Each player's config is independent
-- Terrain changes sync to all online players in real time
-- Undo only affects your own operation history
-- Communicate with teammates before large operations
+- Terrain changes sync in real time
+- Avoid overlapping operations in the same area
+- Undo only reverts your own history
 
-## Configuration
+---
 
-- Config is saved at `config/pushdozer_config.json` and synced to the server for your operations
-- Prefer the in-game config screen over manual JSON editing
-- Legacy flat JSON structures (without nested `brush` sections) are auto-migrated on load
+## Configuration Management
+
+- Path: `config/pushdozer_config.json`
+- Prefer the in-game config screen
+- Legacy flat JSON auto-migrates on load
+- Back up the config file to reuse settings across worlds

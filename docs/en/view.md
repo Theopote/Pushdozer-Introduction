@@ -1,6 +1,10 @@
 # Display Modes
 
-Pushdozer provides 4 brush preview modes, cycled with `V`: **Wireframe → Point Cloud → Surface → None**.
+Pushdozer provides 4 brush preview modes. Default is **Wireframe**. Press `V` to cycle:
+
+**Wireframe → Point Cloud → Surface → None → Wireframe → …**
+
+You can also click the **Display Mode** button in the config screen.
 
 Previews are client-side only and do not affect the actual operation area.
 
