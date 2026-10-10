@@ -149,7 +149,7 @@ All fields below are valid and match the mod's first-run defaults:
 | `noiseOctaves` | Noise octaves | `4` |
 | `surfaceConvertBlocks` | Surface convert blocks & percentages | grass block 100% |
 | `surfaceConvertDistribution` | Distribution mode | `PATCHY` (natural patches) |
-| `convertArtificialSurfaces` | Allow artificial surface conversion | `false` |
+| `convertArtificialSurfaces` | Allow converting artificial blocks | `false` |
 | `surfaceConvertMaxBelowSurfaceDepth` | Depth below surface for conversion | `3` |
 
 **placeMode values**: `ADAPTIVE_BIOME`, `NATURAL_BLOCK`

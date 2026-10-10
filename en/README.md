@@ -2,7 +2,7 @@
 
 > Pushdozer is a simple yet powerful Minecraft terrain editing mod that gives builders and creators intuitive tools for large-scale terrain modifications. Whether leveling mountains, digging tunnels, batch-planting vegetation, or processing shorelines and surface conversions, Pushdozer makes it effortless.
 
-**Documentation version: v1.1.1** · Minecraft 1.21.11 · Fabric
+**Documentation version: v1.1.2** · Minecraft 1.21.11 · Fabric
 
 ## Key Features
 
@@ -26,4 +26,4 @@
 | [Submit an Issue](https://github.com/Theopote/Pushdozer_Mod/issues) | Bug reports and feature requests |
 | [Discord Community](https://discord.gg/jjr8WmPZ) | Community chat |
 
-> The `pushdozer-1.0.0.jar` in this documentation repo root is an old sample, not the current v1.1.1 build. Download from Modrinth or GitHub Releases instead.
+> Download the latest build from Modrinth or GitHub Releases.

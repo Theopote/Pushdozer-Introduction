@@ -16,11 +16,11 @@
 
 1. Install the [Fabric mod loader](https://fabricmc.net/use/)
 2. Download and install [Fabric API](https://modrinth.com/mod/fabric-api)
-3. Download Pushdozer **v1.1.1** from [Modrinth](https://modrinth.com/mod/pushdozer) (recommended) or [GitHub Releases](https://github.com/Theopote/Pushdozer_Mod/releases)
+3. Download Pushdozer **v1.1.2** from [Modrinth](https://modrinth.com/mod/pushdozer) (recommended) or [GitHub Releases](https://github.com/Theopote/Pushdozer_Mod/releases)
 4. Place the JAR file in your `.minecraft/mods` folder
 5. Launch the game (client or dedicated server)
 
-> **Note**: Do not use `pushdozer-1.0.0.jar` from this documentation repo—it is an old sample, not the current release.
+> **Note**: Download the official release from Modrinth or GitHub Releases; do not use outdated JARs from unofficial sources.
 
 ## First Use
 

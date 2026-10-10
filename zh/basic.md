@@ -16,11 +16,11 @@
 
 1. 安装 [Fabric 模组加载器](https://fabricmc.net/use/)
 2. 下载并安装 [Fabric API](https://modrinth.com/mod/fabric-api)
-3. 从 [Modrinth](https://modrinth.com/mod/pushdozer)（推荐）或 [GitHub Releases](https://github.com/Theopote/Pushdozer_Mod/releases) 下载 Pushdozer **v1.1.1**
+3. 从 [Modrinth](https://modrinth.com/mod/pushdozer)（推荐）或 [GitHub Releases](https://github.com/Theopote/Pushdozer_Mod/releases) 下载 Pushdozer **v1.1.2**
 4. 将 JAR 文件放入 `.minecraft/mods` 文件夹
 5. 启动游戏（客户端或专用服务器均可）
 
-> **注意**：请勿使用文档仓库中的 `pushdozer-1.0.0.jar`——那是旧版示例，不是当前发布包。
+> **注意**：请从 Modrinth 或 GitHub Releases 下载正式安装包，不要使用非官方来源的旧版 JAR。
 
 ## 首次使用
 

@@ -1,8 +1,18 @@
 # Changelog
 
-This documentation corresponds to Pushdozer mod version **v1.1.1** (Minecraft 1.21.11).
+This documentation corresponds to Pushdozer mod version **v1.1.2** (Minecraft 1.21.11).
 
 Full developer changelog: [GitHub CHANGELOG](https://github.com/Theopote/Pushdozer_Mod/blob/main/CHANGELOG.md).
+
+---
+
+## v1.1.2 (2026-10-10)
+
+### Changed
+
+- Smooth panel: raise/lower variants show separate slider labels (Raise Depth / Lower Depth)
+- Surface convert toggle label clarified (Allow converting artificial blocks)
+- Release and documentation updated to 1.1.2
 
 ---
 
@@ -48,6 +58,7 @@ Full developer changelog: [GitHub CHANGELOG](https://github.com/Theopote/Pushdoz
 
 | Doc Version | Mod Version | Notes |
 |-------------|-------------|-------|
-| v1.1.1 | Pushdozer 1.1.1 | Current docs: 8 UI modes, 4 smooth variants, full selection screen docs |
+| v1.1.2 | Pushdozer 1.1.2 | Current docs; dynamic smooth slider labels, surface convert wording |
+| v1.1.1 | Pushdozer 1.1.1 | 8 UI modes, 4 smooth variants, full selection screen docs |
 
 If the mod updates after this documentation, in-game behavior takes precedence. Check GitHub releases for changes.
