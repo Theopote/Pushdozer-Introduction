@@ -44,6 +44,22 @@ Possible causes:
 
 The server validates brush size within 1–64. If you see an out-of-range message, reduce brush parameters in the config screen.
 
+### Which smooth variant should I use?
+
+| Need | Variant |
+|------|---------|
+| Large-scale leveling | Standard Smooth |
+| Preserve landforms | Adaptive Smooth |
+| Local raise | Raise |
+| Local lower | Lower |
+
+See [Work Modes — Smooth](modes.md#smooth) and [Tutorials](workflows.md).
+
+### Patchy vs scatter in surface convert?
+
+- **Natural Patches**: Coherent clusters — better for natural transitions
+- **Random Scatter**: Independent per column — more uniform but choppier edges
+
 ### Planting/tree generation fails
 
 1. Check if **Respect Biomes** is enabled — the current biome may not support the selected plant

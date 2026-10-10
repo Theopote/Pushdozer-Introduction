@@ -1,6 +1,12 @@
 # 配置界面详解
 
-按 `K` 打开 **推土机配置** 界面（需主手持有推土机）。也可通过 ModMenu 模组列表中的 Pushdozer 按钮进入。
+按 `K` 打开 **推土机配置** 界面（需主手持有推土机）。也可通过 **ModMenu** 进入（需安装 [ModMenu](https://modrinth.com/mod/modmenu)，可选依赖）。
+
+### ModMenu 入口
+
+1. 主菜单 → **Mods（模组）**
+2. 找到 **Pushdozer** → 点击配置按钮
+3. 打开与 `K` 键相同的配置界面
 
 ---
 

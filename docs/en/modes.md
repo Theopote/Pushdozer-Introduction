@@ -183,3 +183,5 @@ Creates natural shoreline material transitions at water edges (**replaces surfac
 - **Operate Above/Below Height** — requires a non–No Limit height mode first; the two toggles are mutually exclusive
 
 **Use cases**: Beaches, riverbanks, lake ecosystems, swamp shorelines.
+
+> Biome-specific material rules: [Shoreline Presets](shoreline.md). Step-by-step guides: [Tutorials](workflows.md).

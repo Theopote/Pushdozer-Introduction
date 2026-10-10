@@ -15,7 +15,7 @@
 - 🔄 **撤销/重做** — 每名玩家 30 步操作历史
 - 🌐 **多人联机** — 地形操作实时同步，每人独立配置
 
-[开始使用 →](basic.md) · [名词解释 →](glossary.md) · [配置界面 →](config-ui.md) · [参考手册 →](reference.md)
+[开始使用 →](basic.md) · [操作教程 →](workflows.md) · [名词解释 →](glossary.md) · [配置界面 →](config-ui.md) · [参考手册 →](reference.md)
 
 ## 下载与反馈
 

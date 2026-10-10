@@ -86,3 +86,5 @@ All shortcuts require holding the Pushdozer tool. Rebind them in Minecraft's con
 2. Set shoreline type to **Beach**
 3. Adjust shoreline width, optionally enable vegetation
 4. Right-click the water's edge
+
+More step-by-step guides: [Tutorials](workflows.md).

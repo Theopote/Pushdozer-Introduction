@@ -15,7 +15,7 @@
 - 🔄 **Undo/Redo** — 30 steps of operation history per player
 - 🌐 **Multiplayer** — Real-time terrain sync with per-player independent config
 
-[Get Started →](basic.md) · [Glossary →](glossary.md) · [Config Screen →](config-ui.md) · [Reference →](reference.md)
+[Get Started →](basic.md) · [Tutorials →](workflows.md) · [Glossary →](glossary.md) · [Config Screen →](config-ui.md) · [Reference →](reference.md)
 
 ## Download & Feedback
 

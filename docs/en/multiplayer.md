@@ -83,6 +83,15 @@ Config is saved locally at `config/pushdozer_config.json` and synced to the serv
 2. Lower brush sizes
 3. Split large projects into smaller operations
 
+## Dedicated Server Setup
+
+1. Install **Fabric Loader**, **Fabric API**, and **Pushdozer** in the server's `mods` folder
+2. Clients need matching Pushdozer and Fabric API versions
+3. No extra config files; loads automatically with the world
+4. Each player uses local config; operations execute on the server
+
+> Players without Pushdozer on the client cannot use the tool but can still join.
+
 ## Server Administrators
 
 Pushdozer requires no additional server configuration. To restrict usage:
