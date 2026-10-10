@@ -2,7 +2,7 @@ name: Deploy documentation to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,24 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Checkout Pushdozer_Mod for doc verification
+        uses: actions/checkout@v4
+        with:
+          repository: Theopote/Pushdozer_Mod
+          path: mod-source
+
+      - name: Verify documentation
+        env:
+          MOD_SOURCE: ${{ github.workspace }}/mod-source
+        run: node scripts/verify-docs.mjs
+
   deploy:
+    needs: verify
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -24,7 +41,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure GitHub Pages
+      - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload docs site

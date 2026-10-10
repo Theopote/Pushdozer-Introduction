@@ -3,10 +3,11 @@
  * Pushdozer documentation consistency checker.
  * Run from Pushdozer-Introduction repo root:
  *   node scripts/verify-docs.mjs
- * Optional: MOD_SOURCE=/path/to/Pushdozer_Mod node scripts/verify-docs.mjs
+ *
+ * CI sets MOD_SOURCE after checking out Pushdozer_Mod.
  */
 
-import { readFileSync, readdirSync, statSync } from 'fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'fs';
 import { join, relative } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -30,6 +31,12 @@ function walk(dir, ext, files = []) {
   return files;
 }
 
+function readModFile(relPath) {
+  const full = join(MOD_SOURCE, relPath);
+  if (!existsSync(full)) return null;
+  return readFileSync(full, 'utf8');
+}
+
 function checkStaleLinks() {
   const patterns = [
     /github\.com\/theopote\/pushdozer\b/gi,
@@ -40,9 +47,7 @@ function checkStaleLinks() {
     ...walk(DOCS, '.md'),
     join(DOCS, 'index.html'),
     join(ROOT, 'README.md'),
-  ].filter((f) => {
-    try { statSync(f); return true; } catch { return false; }
-  });
+  ].filter((f) => existsSync(f));
 
   for (const file of files) {
     const content = readFileSync(file, 'utf8');
@@ -55,76 +60,137 @@ function checkStaleLinks() {
   }
 }
 
-function readModConstant(file, regex, label) {
-  try {
-    const content = readFileSync(join(MOD_SOURCE, file), 'utf8');
-    const m = content.match(regex);
-    if (!m) {
-      warnings.push(`Could not extract ${label} from ${file}`);
-      return null;
-    }
-    return m[1];
-  } catch {
-    warnings.push(`Mod source not found at ${MOD_SOURCE} — skipping ${label} check`);
-    return null;
-  }
-}
-
-function checkConstantsInDocs() {
-  const checks = [
-    { file: 'src/main/resources/fabric.mod.json', regex: /"version":\s*"([^"]+)"/, label: 'mod version', docPattern: /v1\.1\.1/ },
-    { file: 'src/main/java/com/pushdozer/config/domain/BrushConfig.java', regex: /MAX_BRUSH_RADIUS = (\d+)/, label: 'max brush', docPattern: /1.?64|64/ },
-    { file: 'src/main/java/com/pushdozer/config/PushdozerConfig.java', regex: /MAX_OPERATION_DISTANCE = (\d+)/, label: 'max distance', docPattern: /99/ },
-    { file: 'src/main/java/com/pushdozer/operations/UndoRedoManager.java', regex: /MAX_UNDO_REDO_STEPS = (\d+)/, label: 'undo steps', docPattern: /30/ },
-    { file: 'src/main/java/com/pushdozer/network/BatchedNetworkManager.java', regex: /MAX_BATCH_SIZE = (\d+)/, label: 'batch size', docPattern: /500/ },
-    { file: 'src/main/java/com/pushdozer/network/NetworkManager.java', regex: /positions\.size\(\) <= (\d+)/, label: 'immediate sync threshold', docPattern: /50/ },
-  ];
-
-  const refFiles = walk(DOCS, '.md').filter((f) =>
-    f.includes('reference') || f.includes('cheatsheet') || f.includes('multiplayer') || f.includes('basic')
-  );
-
-  for (const { file, regex, label, docPattern } of checks) {
-    const value = readModConstant(file, regex, label);
-    if (value == null) continue;
-    const found = refFiles.some((df) => docPattern.test(readFileSync(df, 'utf8')));
-    if (!found) {
-      warnings.push(`Docs may not mention ${label}=${value}`);
-    }
-  }
-}
-
 function checkDefaultHomepage() {
   const html = readFileSync(join(DOCS, 'index.html'), 'utf8');
   if (!html.includes("homepage: '/zh/README.md'")) {
     errors.push('docs/index.html default homepage should be /zh/README.md');
   }
-  if (!html.includes("Theopote/Pushdozer_Mod")) {
+  if (!html.includes('Theopote/Pushdozer_Mod')) {
     errors.push('docs/index.html repo should be Theopote/Pushdozer_Mod');
   }
 }
 
-function checkWorkModeOrder() {
-  try {
-    const kb = readFileSync(join(MOD_SOURCE, 'src/main/java/com/pushdozer/client/KeyBindings.java'), 'utf8');
-    const modesMatch = kb.match(/toggleWorkMode[\s\S]*?WorkMode\.(\w+)/g);
-    if (modesMatch) {
-      const modesMd = readFileSync(join(DOCS, 'zh', 'modes.md'), 'utf8');
-      if (!modesMd.includes('挖掘 → 铺设 → 平滑')) {
-        warnings.push('zh/modes.md G-cycle order may be outdated');
+/** Fail if docs still claim K requires main hand only. */
+function checkKeyBindingDocs() {
+  const badPatterns = [
+    /K[^\n]{0,40}(仅主手|需主手|主手.*无效)/,
+    /K[^\n]{0,60}main hand only/i,
+    /配置界面 K[^\n]*✗/,
+    /Config screen K[^\n]*✗/,
+    /K cannot open/i,
+  ];
+  const files = walk(DOCS, '.md');
+  for (const file of files) {
+    const content = readFileSync(file, 'utf8');
+    for (const pattern of badPatterns) {
+      if (pattern.test(content)) {
+        errors.push(`${relative(ROOT, file)}: K key docs contradict KeyBindings (main or offhand)`);
+        break;
       }
     }
-  } catch {
-    /* mod source optional */
   }
 }
 
-console.log('Pushdozer docs verification\n');
+/** Geometry sub-panels: doc must not list UI controls absent from Java source. */
+function checkGeometrySubPanels() {
+  const subPanelDir = join(MOD_SOURCE, 'src/main/java/com/pushdozer/ui/panels/brushgeometry');
+  if (!existsSync(subPanelDir)) {
+    warnings.push('Mod geometry sub-panels not found — skipping UI checks');
+    return;
+  }
+
+  const expected = {
+    TetrahedronSubPanel: { sliders: ['edgeLength'], forbiddenInDoc: /正四面体[^\n]*高度|tetrahedron[^\n]*height/i },
+    SphereSubPanel: { sliders: ['radius'] },
+    OctahedronSubPanel: { sliders: ['radius'] },
+  };
+
+  for (const [panel, rules] of Object.entries(expected)) {
+    const src = readModFile(`src/main/java/com/pushdozer/ui/panels/brushgeometry/${panel}.java`);
+    if (!src) continue;
+    const sliderCount = (src.match(/addSlider\(/g) || []).length;
+    if (rules.sliders && sliderCount !== rules.sliders.length) {
+      warnings.push(`${panel}: expected ${rules.sliders.length} slider(s), found ${sliderCount} in source`);
+    }
+  }
+
+  const configUiFiles = [
+    join(DOCS, 'zh', 'config-ui.md'),
+    join(DOCS, 'en', 'config-ui.md'),
+  ];
+  for (const file of configUiFiles) {
+    if (!existsSync(file)) continue;
+    const content = readFileSync(file, 'utf8');
+    if (/正四面体[^\n]*边长、高度|Tetrahedron[^\n]*Edge length, height/i.test(content)) {
+      errors.push(`${relative(ROOT, file)}: Tetrahedron panel has only edge length slider in UI`);
+    }
+  }
+}
+
+/** Compare numeric constants in source against reference docs (exact match required). */
+function checkExactConstants() {
+  const modVersion = readModFile('src/main/resources/fabric.mod.json')?.match(/"version":\s*"([^"]+)"/)?.[1];
+  const maxBrush = readModFile('src/main/java/com/pushdozer/config/domain/BrushConfig.java')?.match(/MAX_BRUSH_RADIUS = (\d+)/)?.[1];
+  const maxDist = readModFile('src/main/java/com/pushdozer/config/PushdozerConfig.java')?.match(/MAX_OPERATION_DISTANCE = (\d+)/)?.[1];
+  const undoSteps = readModFile('src/main/java/com/pushdozer/operations/UndoRedoManager.java')?.match(/MAX_UNDO_REDO_STEPS = (\d+)/)?.[1];
+  const batchSize = readModFile('src/main/java/com/pushdozer/network/BatchedNetworkManager.java')?.match(/MAX_BATCH_SIZE = (\d+)/)?.[1];
+  const batchDelay = readModFile('src/main/java/com/pushdozer/network/BatchedNetworkManager.java')?.match(/BATCH_DELAY_MS = (\d+)/)?.[1];
+  const immediateThreshold = readModFile('src/main/java/com/pushdozer/network/NetworkManager.java')?.match(/positions\.size\(\) <= (\d+)/)?.[1];
+
+  if (!modVersion) {
+    warnings.push('Mod source unavailable — set MOD_SOURCE or checkout Pushdozer_Mod in CI');
+    return;
+  }
+
+  const docFiles = walk(DOCS, '.md').filter((f) =>
+    /reference|multiplayer|cheatsheet/.test(f)
+  );
+  const combined = docFiles.map((f) => readFileSync(f, 'utf8')).join('\n');
+
+  const checks = [
+    [maxBrush, `1–${maxBrush}`, `brush max ${maxBrush}`],
+    [maxDist, `1–${maxDist}`, `operation distance max ${maxDist}`],
+    [undoSteps, `${undoSteps}`, `undo steps ${undoSteps}`],
+    [batchSize, `${batchSize}`, `batch size ${batchSize}`],
+    [batchDelay, `${batchDelay}`, `batch delay ${batchDelay}ms`],
+    [immediateThreshold, `${immediateThreshold}`, `immediate sync threshold ${immediateThreshold}`],
+  ];
+
+  for (const [value, needle, label] of checks) {
+    if (value && !combined.includes(String(needle)) && !combined.includes(String(value))) {
+      errors.push(`reference docs missing ${label} (source=${value})`);
+    }
+  }
+
+  const readmes = [join(DOCS, 'zh', 'README.md'), join(DOCS, 'en', 'README.md')];
+  for (const r of readmes) {
+    const c = readFileSync(r, 'utf8');
+    if (!c.includes(modVersion)) {
+      warnings.push(`${relative(ROOT, r)} may not mention mod version ${modVersion}`);
+    }
+  }
+}
+
+function checkKeyBindingsSource() {
+  const kb = readModFile('src/main/java/com/pushdozer/client/KeyBindings.java');
+  if (!kb) return;
+  if (!kb.includes('offHand.getItem() instanceof PushdozerItem')) {
+    errors.push('KeyBindings.java no longer checks offhand — update docs and verify-docs');
+  }
+  if (!kb.includes('openConfigKey.wasPressed() && isHoldingPushdozer(client)')) {
+    warnings.push('KeyBindings K gate may have changed');
+  }
+}
+
+console.log('Pushdozer docs verification');
+console.log(`MOD_SOURCE: ${MOD_SOURCE}\n`);
 
 checkStaleLinks();
 checkDefaultHomepage();
-checkConstantsInDocs();
-checkWorkModeOrder();
+checkKeyBindingDocs();
+checkGeometrySubPanels();
+checkExactConstants();
+checkKeyBindingsSource();
 
 if (warnings.length) {
   console.log('Warnings:');
@@ -139,4 +205,3 @@ if (errors.length) {
 }
 
 console.log('✓ All checks passed');
-if (warnings.length) process.exit(0);

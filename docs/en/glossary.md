@@ -20,13 +20,7 @@ A reference of common in-game terms and concepts used in Pushdozer.
 
 ### Interaction requirements
 
-| Action | Main hand | Offhand |
-|--------|-----------|---------|
-| Shortcuts G/U/V/↑↓/Ctrl+Z/Y | ✓ | ✓ |
-| Config screen K | ✓ | ✗ |
-| Right-click execute | ✓ | ✓ |
-
-See [Getting Started · Interaction Requirements](basic.md#interaction-requirements).
+All shortcuts (including `K`) and right-click execution work with the Pushdozer in your main hand or offhand. See [Getting Started · Interaction Requirements](basic.md#interaction-requirements).
 
 ---
 

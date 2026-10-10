@@ -43,3 +43,5 @@ node scripts/verify-docs.mjs
 ```
 
 CI 会在 push/PR 时自动运行 `.github/workflows/docs-check.yml`。
+
+GitHub Pages 部署说明见 [docs/DEPLOY.md](docs/DEPLOY.md)（需在仓库 Settings → Pages 中选择 **GitHub Actions** 作为来源）。

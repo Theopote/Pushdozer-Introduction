@@ -36,8 +36,8 @@ Possible causes:
 
 ### Key bindings don't work
 
-1. Confirm the Pushdozer is in your main hand or offhand (G/U/V shortcuts work in either)
-2. **K requires main hand** to open the config screen—switch to main hand or use ModMenu if K does nothing
+1. Confirm the Pushdozer is in your main hand or offhand (all shortcuts including `K` work in either)
+2. You can also open the config screen via ModMenu without holding the tool
 3. Check **Options → Controls → Pushdozer** for conflicts
 4. Undo/redo requires holding `Ctrl`
 

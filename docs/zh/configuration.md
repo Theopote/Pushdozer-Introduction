@@ -51,7 +51,6 @@
     "coneHeight": 5,
     "sphereHeight": 5,
     "octahedronHeight": 5,
-    "tetrahedronHeight": 5,
     "triangularPrismHeight": 5,
     "ellipsoidHeight": 5,
     "lockedHeight": 0,

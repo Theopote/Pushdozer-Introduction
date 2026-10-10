@@ -36,7 +36,7 @@ Creative mode → Inventory → Tools tab → Pushdozer
 | Detail | Value |
 |--------|-------|
 | Stack size | 1 (non-stackable) |
-| Holding | Main hand for config; main or offhand for operations |
+| Holding | Main hand or offhand for config (K) and operations (right-click) |
 
 <!-- Screenshot placeholder: Pushdozer in Creative Tools tab -->
 

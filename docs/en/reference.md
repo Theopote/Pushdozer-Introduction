@@ -45,7 +45,7 @@ Defaults, system limits, in-game messages, and operation mechanics for Pushdozer
 | Smooth / directional depth | 0.1–1.0 |
 | Roughness strength | 0.1–2.0 |
 | Plant density | 10–100% |
-| Config screen (K) | Main hand only; other shortcuts work in main or offhand |
+| Config screen (K) | Main hand or offhand |
 
 ---
 
@@ -168,17 +168,13 @@ The brush geometry is built around this center, then height filters apply.
 
 ## Interaction Requirements
 
-| Action | Main hand | Offhand |
-|--------|-----------|---------|
-| Shortcuts G/U/V/↑↓/Ctrl+Z/Y | ✓ | ✓ |
-| Config screen K | ✓ | ✗ |
-| Right-click execute | ✓ | ✓ |
+All shortcuts and right-click execution work when the Pushdozer is in your main hand or offhand.
 
 ## Complete Key Bindings
 
 | Key | Action | Hold requirement |
 |-----|--------|------------------|
-| `K` | Open/close config screen | Main hand |
+| `K` | Open/close config screen | Main or offhand |
 | `G` | Cycle work modes | Main or offhand |
 | `U` | Cycle brush geometries | Main or offhand |
 | `V` | Cycle display modes | Main or offhand |

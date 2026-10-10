@@ -2,7 +2,7 @@
 
 ## Standard Workflow
 
-1. Hold the Pushdozer (main or offhand for operations; main hand required for config screen)
+1. Hold the Pushdozer (main or offhand for shortcuts and right-click execution)
 2. Press `K` to open the config screen
 3. Select **Work Mode** → click **Config** for mode settings
 4. Select **Brush Shape** → click **Config** for size

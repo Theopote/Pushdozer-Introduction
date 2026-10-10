@@ -1,6 +1,6 @@
 # Configuration Screen Reference
 
-Press `K` to open the **Pushdozer Configuration** screen (**main hand** required; K does nothing with the tool in offhand, but G/U/V shortcuts still work). Also available via **ModMenu** (optional [ModMenu](https://modrinth.com/mod/modmenu) mod).
+Press `K` to open the **Pushdozer Configuration** screen while holding the Pushdozer in your **main hand or offhand**. Also available via **ModMenu** (optional [ModMenu](https://modrinth.com/mod/modmenu) mod; no tool required).
 
 ### ModMenu Entry
 
@@ -51,7 +51,7 @@ Each geometry has its own sub-panel. All sliders range from **1–64**:
 | Cylinder | Radius, height | `cylinderRadius`, `cylinderHeight` |
 | Cone | Radius, height | `coneRadius`, `coneHeight` |
 | Ellipsoid | Length, width, height | `length`, `width`, `ellipsoidHeight` |
-| Tetrahedron | Edge length, height | `tetrahedronEdgeLength`, `tetrahedronHeight` |
+| Tetrahedron | Edge length | `tetrahedronEdgeLength` |
 | Triangular Prism | Side length, height | `triangularPrismSideLength`, `triangularPrismHeight` |
 
 The **Done** button at the bottom saves and closes.

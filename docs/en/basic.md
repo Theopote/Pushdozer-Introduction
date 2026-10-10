@@ -47,13 +47,12 @@ You can also access the config screen via the Pushdozer button in the ModMenu mo
 
 ## Interaction Requirements
 
+Hold the Pushdozer in your **main hand or offhand** to use all shortcuts, including `K` for the config screen. ModMenu also opens the config screen without holding the tool.
+
 | Action | Main hand | Offhand |
 |--------|-----------|---------|
-| Shortcut keys (G/U/V/↑↓/Ctrl+Z/Y) | ✓ | ✓ |
-| Open config screen (K) | ✓ | ✗ |
+| Shortcuts (K/G/U/V/↑↓/Ctrl+Z/Y) | ✓ | ✓ |
 | Right-click to execute | ✓ | ✓ |
-
-> With the Pushdozer in your offhand, G/U/V shortcuts still work, but **K cannot open the config screen** (main hand required). The ModMenu entry is not affected.
 
 ## Default Key Bindings
 
@@ -61,7 +60,7 @@ Shortcuts respond when the Pushdozer is in your main hand or offhand. Rebind the
 
 | Key | Action |
 |-----|--------|
-| `K` | Open/close configuration screen (main hand) |
+| `K` | Open/close configuration screen |
 | `G` | Cycle work modes |
 | `U` | Cycle brush geometries (8 types) |
 | `V` | Cycle display modes (Wireframe → Point Cloud → Surface → None → …) |
@@ -78,7 +77,7 @@ Follow this single flow for your first terrain edit:
 | Step | Action |
 |------|--------|
 | 1. Get the tool | Creative mode → **Tools** group → **Pushdozer** |
-| 2. Open config | Hold in **main hand**, press `K` |
+| 2. Open config | Hold in main hand or offhand, press `K` |
 | 3. Choose mode | Select **Excavate** → **Config** → **Select blocks to destroy**, check dirt, stone, etc. |
 | 4. Set brush | **Box** brush ~8×8×3; height mode **Lock Player Height** |
 | 5. Preview | Press `V` for **Wireframe** (default); move view to see brush bounds |

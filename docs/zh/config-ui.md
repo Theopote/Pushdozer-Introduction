@@ -1,6 +1,6 @@
 # 配置界面详解
 
-按 `K` 打开 **推土机配置** 界面（**需主手**持有推土机；副手持有时 K 无效，但 G/U/V 等快捷键仍可用）。也可通过 **ModMenu** 进入（需安装 [ModMenu](https://modrinth.com/mod/modmenu)，可选依赖）。
+按 `K` 打开 **推土机配置** 界面（主手或副手持有推土机均可）。也可通过 **ModMenu** 进入（需安装 [ModMenu](https://modrinth.com/mod/modmenu)，可选依赖；ModMenu 入口无需手持工具）。
 
 ### ModMenu 入口
 
@@ -51,7 +51,7 @@
 | 圆柱体 | 半径、高度 | `cylinderRadius`, `cylinderHeight` |
 | 圆锥体 | 半径、高度 | `coneRadius`, `coneHeight` |
 | 椭球体 | 长度、宽度、高度 | `length`, `width`, `ellipsoidHeight` |
-| 正四面体 | 边长、高度 | `tetrahedronEdgeLength`, `tetrahedronHeight` |
+| 正四面体 | 边长 | `tetrahedronEdgeLength` |
 | 三棱柱 | 边长、高度 | `triangularPrismSideLength`, `triangularPrismHeight` |
 
 子面板底部 **完成** 按钮保存并关闭。

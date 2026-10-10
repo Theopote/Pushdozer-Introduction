@@ -6,17 +6,13 @@ One-page cheat sheet for Pushdozer. Full parameters, in-game messages, and mecha
 
 ## Interaction Requirements
 
-| Action | Main hand | Offhand |
-|--------|-----------|---------|
-| Shortcuts G/U/V/↑↓/Ctrl+Z/Y | ✓ | ✓ |
-| Config screen K | ✓ | ✗ |
-| Right-click execute | ✓ | ✓ |
+All shortcuts (including `K`) work when the Pushdozer is in your main hand or offhand.
 
 ## Key Bindings
 
 | Key | Action |
 |-----|--------|
-| `K` | Config screen (main hand only) |
+| `K` | Config screen |
 | `G` | Cycle work mode |
 | `U` | Cycle brush shape |
 | `V` | Cycle display mode |
