@@ -17,8 +17,8 @@
 
 | 工作流 | 作用 |
 |--------|------|
-| **Docs Check** | push/PR 时对照 Pushdozer_Mod 验证文档 |
-| **Deploy documentation to GitHub Pages** | 验证通过后，将 `docs/` 推送到 `gh-pages` 分支 |
+| **Docs Check** | push/PR 时对照 Pushdozer_Mod 验证文档，并用浏览器检查导航 |
+| **Deploy documentation to GitHub Pages** | 一致性检查及浏览器导航测试通过后，将 `docs/` 推送到 `gh-pages` 分支 |
 
 推送 `main`/`master` 后，Actions 会自动运行。首次需在 **Settings → Pages** 中按上文选好 `gh-pages` 分支，网站才会对外可见。
 
@@ -48,4 +48,9 @@ npx serve .
 
 ```bash
 MOD_SOURCE=../path/to/Pushdozer_Mod node scripts/verify-docs.mjs
+npm ci
+npx playwright install chromium
+npm run test:docs
 ```
+
+浏览器测试需要 Node.js 20 或更高版本，并访问 Docsify 的 CDN，因此需要网络连接。测试覆盖网站根路径和 GitHub Pages 子路径、双语导航、目录、刷新和旧链接。

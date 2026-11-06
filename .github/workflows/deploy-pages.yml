@@ -18,6 +18,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
       - name: Checkout Pushdozer_Mod for doc verification
         uses: actions/checkout@v4
         with:
@@ -28,6 +32,14 @@ jobs:
         env:
           MOD_SOURCE: ${{ github.workspace }}/mod-source
         run: node scripts/verify-docs.mjs
+
+      - name: Install browser test dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Test documentation navigation
+        run: npm run test:docs
 
   deploy:
     needs: verify

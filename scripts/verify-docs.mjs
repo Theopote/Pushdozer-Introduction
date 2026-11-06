@@ -65,8 +65,8 @@ function checkDefaultHomepage() {
   if (!/homepage:\s*['"]\/?zh\/README\.md['"]/.test(html)) {
     errors.push('docs/index.html default homepage should be zh/README.md');
   }
-  if (!html.includes('Pushdozer-Introduction')) {
-    errors.push('docs/index.html should set basePath for GitHub Pages subpath');
+  if (!/basePath:\s*new URL\('\.',\s*window\.location\.href\)\.pathname/.test(html)) {
+    errors.push('docs/index.html should derive basePath from its URL');
   }
   if (!/relativePath:\s*true/.test(html)) {
     errors.push('docs/index.html should set relativePath: true (sidebar links need /zh/ prefix)');

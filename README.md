@@ -46,8 +46,11 @@ python -m http.server 3000
 
 ```bash
 node scripts/verify-docs.mjs
+npm ci
+npx playwright install chromium
+npm run test:docs
 ```
 
-CI 会在 push/PR 时自动运行 `.github/workflows/docs-check.yml`。
+浏览器导航测试需要 Node.js 20 或更高版本及网络访问 Docsify 的 CDN。CI 会在 push/PR 时自动运行 `.github/workflows/docs-check.yml`；部署前也会执行这些检查。
 
 GitHub Pages 部署说明见 [docs/DEPLOY.md](docs/DEPLOY.md)（需在 Settings → Pages 中选择 **Deploy from a branch → gh-pages**）。
