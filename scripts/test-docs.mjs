@@ -69,7 +69,6 @@ test('documentation navigation works at the root and a GitHub Pages subpath', as
       return images.length > 0 && images.every((image) => image.complete && image.naturalWidth > 0);
     });
 
-    await page.locator('.app-nav').getByText('Language').hover();
     await page.locator('.app-nav a', { hasText: 'English' }).click();
     await page.locator('.sidebar-nav a', { hasText: 'Getting Started' }).waitFor();
     await page.locator('.markdown-section h1', { hasText: 'Pushdozer Introduction' }).waitFor();
@@ -84,7 +83,6 @@ test('documentation navigation works at the root and a GitHub Pages subpath', as
     await page.locator('.markdown-section h1', { hasText: 'Getting Started' }).waitFor();
     assert.equal(await page.locator('html').getAttribute('lang'), 'en');
 
-    await page.locator('.app-nav').getByText('Language').hover();
     await page.locator('.app-nav a', { hasText: '中文' }).click();
     await page.locator('.sidebar-nav a', { hasText: '入门指南' }).waitFor();
     assert.equal(new URL(page.url()).hash, '#/zh/');
@@ -105,6 +103,29 @@ test('documentation navigation works at the root and a GitHub Pages subpath', as
     await page.goto(`${base}#/?id=core`, { waitUntil: 'domcontentloaded' });
     await page.waitForURL('**/#/zh/?id=core');
     await page.locator('.sidebar-nav a', { hasText: '入门指南' }).waitFor();
+
+    const mobile = await browser.newContext({
+      viewport: { width: 390, height: 844 },
+      isMobile: true,
+      hasTouch: true,
+    });
+    try {
+      await mobile.route('https://fonts.googleapis.com/**', (route) => route.abort());
+      const mobilePage = await mobile.newPage();
+      mobilePage.on('pageerror', (error) => errors.push(error.message));
+      await mobilePage.goto(`${base}#/zh/basic`, { waitUntil: 'domcontentloaded' });
+      await mobilePage.locator('.markdown-section h1', { hasText: '入门指南' }).waitFor();
+      await mobilePage.locator('.app-nav a', { hasText: 'English' }).tap();
+      await mobilePage.locator('.markdown-section h1', { hasText: 'Pushdozer Introduction' }).waitFor();
+      await mobilePage.locator('.sidebar-nav a', { hasText: 'Getting Started' }).waitFor({ state: 'attached' });
+      assert.equal(new URL(mobilePage.url()).hash, '#/en/');
+      await mobilePage.locator('.app-nav a', { hasText: '中文' }).tap();
+      await mobilePage.locator('.markdown-section h1', { hasText: 'Pushdozer 简介' }).waitFor();
+      await mobilePage.locator('.sidebar-nav a', { hasText: '入门指南' }).waitFor({ state: 'attached' });
+      assert.equal(new URL(mobilePage.url()).hash, '#/zh/');
+    } finally {
+      await mobile.close();
+    }
   }
   assert.deepEqual(errors, []);
 });
