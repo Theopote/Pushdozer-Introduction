@@ -11,17 +11,27 @@
 <body>
   <div id="app"></div>
   <script>
-    // Detect subpath from URL (works on github.io, mirrors, and local serve)
-    const basePath = (function() {
-      const match = window.location.pathname.match(/^(.*\/Pushdozer-Introduction\/)/);
-      return match ? match[1] : '/';
-    })();
+    function redirectLegacyRoute() {
+      const hash = window.location.hash.slice(1);
+      const match = hash.match(/^(\/?)([^/?]*)(\?.*)?$/);
+      if (!match) return;
+
+      const page = match[2];
+      if (!page || /^[\w-]+(?:\.md)?$/i.test(page)) {
+        const language = /^(zh|en)$/i.test(page) ? page.toLowerCase() : 'zh';
+        const target = !page || /^(zh|en|README(?:\.md)?)$/i.test(page) ? '' : page;
+        window.location.replace('#/' + language + '/' + target + (match[3] || ''));
+      }
+    }
+
+    redirectLegacyRoute();
+    window.addEventListener('hashchange', redirectLegacyRoute);
 
     window.$docsify = {
       name: 'Pushdozer',
       repo: 'Theopote/Pushdozer_Mod',
 
-      basePath: basePath,
+      basePath: new URL('.', window.location.href).pathname,
       homepage: 'zh/README.md',
 
       loadSidebar: true,
@@ -64,24 +74,6 @@
             }
             return content;
           });
-
-          // Redirect legacy/wrong routes like #/basic.md → #/zh/basic.md
-          function fixOrphanMdRoute() {
-            const path = vm.route.path;
-            if (/^\/[^/]+\.md$/.test(path)) {
-              vm.router.replace('/zh' + path);
-            }
-          }
-
-          hook.mounted(function() {
-            fixOrphanMdRoute();
-            const path = vm.route.path;
-            if (!path || path === '/') {
-              vm.router.replace('/zh/README.md');
-            }
-          });
-
-          hook.doneEach(fixOrphanMdRoute);
         }
       ]
     };
